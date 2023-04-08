@@ -1,0 +1,7 @@
+@use '../abstracts/mixin' as *;
+.no_task {
+  height: 100vh;
+  @include flexCenter;
+  flex-direction: column;
+  justify-content: flex-start;
+}

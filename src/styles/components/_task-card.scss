@@ -1,0 +1,9 @@
+@use '../abstracts/variables' as *;
+.task {
+  padding: 1.5rem;
+  border: 0.1rem solid $border-color;
+
+  &__input {
+    width: 100%;
+  }
+}
