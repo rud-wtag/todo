@@ -1,19 +1,14 @@
 import React from 'react';
-import { ReactComponent as DoneIcon } from 'assets/ok.svg';
-import { ReactComponent as EditIcon } from 'assets/edit.svg';
-import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import PropTypes from 'prop-types';
+import TaskFooter from 'components/ui/TaskFooter';
 
-function TaskCard({ details, createdAt }) {
+function TaskCard({ details, createdAt, isCompleted = false }) {
+  const completedClasses = isCompleted ? 'completed' : '';
   return (
     <div className="task">
-      <div className="Task__details">{details}</div>
+      <div className={`Task__details--${completedClasses}`}>{details}</div>
       <p className="task__created">Created At: {createdAt}</p>
-      <div className="task__footer">
-        <DoneIcon />
-        <EditIcon />
-        <DeleteIcon />
-      </div>
+      <TaskFooter isCompleted={isCompleted} />
     </div>
   );
 }
@@ -22,5 +17,6 @@ export default TaskCard;
 
 TaskCard.propTypes = {
   details: PropTypes.string,
-  createdAt: PropTypes.string
+  createdAt: PropTypes.string,
+  isCompleted: PropTypes.bool
 };

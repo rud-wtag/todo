@@ -15,6 +15,10 @@ function AddTask() {
     dispatch(setIsAddingTask(false));
     setTaskDetails('');
   };
+  const cancel = (e) => {
+    e.preventDefault();
+    dispatch(setIsAddingTask(false));
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === ENTER) {
@@ -34,7 +38,9 @@ function AddTask() {
         />
         <div className="task__footer">
           <button type="submit">Add task</button>
-          <DeleteIcon />
+          <button onClick={cancel}>
+            <DeleteIcon />
+          </button>
         </div>
       </form>
     </div>
