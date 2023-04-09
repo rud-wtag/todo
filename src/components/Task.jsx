@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 export default function Task({ task }) {
   const { taskDetails, createdAt } = task;
-  console.log(task);
   return <TaskCard details={taskDetails} createdAt={createdAt} />;
 }
 

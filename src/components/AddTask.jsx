@@ -7,7 +7,7 @@ import { validate } from 'utils/helpers/index';
 
 function AddTask() {
   const [error, setError] = useState(null);
-  const [taskDetails, setTaskDetails] = useState(null);
+  const [taskDetails, setTaskDetails] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -19,7 +19,7 @@ function AddTask() {
       setError(null);
       dispatch(addTodo(validateDetails.text));
       dispatch(setIsAddingTask(false));
-      setTaskDetails(null);
+      setTaskDetails('');
     }
   };
   const cancel = (e) => {

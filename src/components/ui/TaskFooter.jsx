@@ -11,8 +11,12 @@ export default function TaskFooter({ isCompleted = false }) {
       <div className="task__footer__left">
         {!isCompleted && (
           <>
-            <Button icon={<DoneIcon />} />
-            <Button icon={<EditIcon />} />
+            <Button>
+              <DoneIcon />
+            </Button>
+            <Button>
+              <EditIcon />
+            </Button>
           </>
         )}
         <button>
