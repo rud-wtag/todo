@@ -3,17 +3,24 @@ import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
 import { ENTER } from 'utils/constants';
-import { sanitize } from '../utils/helpers/index';
+import { validate } from 'utils/helpers/index';
 
 function AddTask() {
-  const [taskDetails, setTaskDetails] = useState('');
+  const [error, setError] = useState(null);
+  const [taskDetails, setTaskDetails] = useState(null);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo(sanitize(taskDetails)));
-    dispatch(setIsAddingTask(false));
-    setTaskDetails('');
+    const validateDetails = validate(taskDetails);
+    if (validateDetails.status === 'error') {
+      setError(validateDetails.message);
+    } else {
+      setError(null);
+      dispatch(addTodo(validateDetails.text));
+      dispatch(setIsAddingTask(false));
+      setTaskDetails(null);
+    }
   };
   const cancel = (e) => {
     e.preventDefault();
@@ -36,6 +43,7 @@ function AddTask() {
           required
           value={taskDetails}
         />
+        {error && <span>{error}</span>}
         <div className="task__footer">
           <button type="submit">Add task</button>
           <button onClick={cancel}>
