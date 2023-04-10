@@ -1,3 +1,4 @@
+import { ERROR, OK } from 'utils/constants';
 export const getDate = () => {
   const date = new Date().toISOString().slice(0, 10).split('-').reverse().join('.');
   return date;
@@ -12,8 +13,8 @@ export const sanitize = (text) => {
 export const validate = (text) => {
   if (text) {
     const sanitized = sanitize(text);
-    if (sanitized === '') return { status: 'error', message: 'Please enter a valid description' };
-    return { status: 'ok', text: sanitized };
+    if (sanitized === '') return { status: ERROR, message: 'Please enter a valid description' };
+    return { status: OK, text: sanitized };
   } else
     return {
       status: 'error',

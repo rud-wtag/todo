@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
-import { ENTER } from 'utils/constants';
+import { ENTER, ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
 
 function AddTask() {
@@ -13,7 +13,7 @@ function AddTask() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const validateDetails = validate(taskDetails);
-    if (validateDetails.status === 'error') {
+    if (validateDetails.status === ERROR) {
       setError(validateDetails.message);
     } else {
       setError(null);
