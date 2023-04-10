@@ -1,7 +1,4 @@
 export const actionTypes = {
   CREATE_TODO: 'CREATE_TODO',
-  DELETE_TODO: 'DELETE_TODO',
-  ADD_TODO: 'ADD_TODO',
-  UPDATE_TODO: 'UPDATE_TODO',
   SET_ADD_TASK: 'SET_ADD_TASK'
 };

@@ -11,20 +11,6 @@ export const addTodo = (taskDetails) => {
     }
   };
 };
-
-export const deleteTodo = (todoId) => {
-  return {
-    type: actionTypes.DELETE_TODO,
-    payload: todoId
-  };
-};
-
-export const editTodo = (todo) => {
-  return {
-    type: actionTypes.EDIT_TODO,
-    payload: todo
-  };
-};
 export const setIsAddingTask = (isAddingTask) => {
   return {
     type: actionTypes.SET_ADD_TASK,
