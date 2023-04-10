@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
@@ -9,6 +9,7 @@ function AddTask() {
   const [error, setError] = useState(null);
   const [taskDetails, setTaskDetails] = useState('');
   const dispatch = useDispatch();
+  const textAreaRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,11 +34,16 @@ function AddTask() {
     }
   };
 
+  useEffect(() => {
+    textAreaRef.current.focus();
+  }, []);
+
   return (
     <div className="task">
       <form onSubmit={handleSubmit}>
         <textarea
           className="task__input"
+          ref={textAreaRef}
           onChange={(e) => setTaskDetails(e.target.value)}
           onKeyDown={handleKeyDown}
           required

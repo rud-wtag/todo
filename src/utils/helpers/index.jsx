@@ -15,9 +15,9 @@ export const validate = (text) => {
     const sanitized = sanitize(text);
     if (sanitized === '') return { status: ERROR, message: 'Please enter a valid description' };
     return { status: OK, text: sanitized };
-  } else
-    return {
-      status: 'error',
-      message: 'can not be empty'
-    };
+  }
+  return {
+    status: ERROR,
+    message: 'can not be empty'
+  };
 };
