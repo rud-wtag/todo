@@ -4,8 +4,16 @@ import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import Button from 'components/ui/Button';
+import { deleteTodo } from 'redux/actions/TodoAction';
+import { useDispatch } from 'react-redux';
+export default function TaskFooter({ isCompleted = false, taskId }) {
+  const dispatch = useDispatch();
 
-export default function TaskFooter({ isCompleted = false }) {
+  const deleteHandler = (e) => {
+    e.preventDefault();
+    dispatch(deleteTodo(taskId));
+  };
+
   return (
     <div className="task__footer">
       <div className="task__footer__left">
@@ -20,7 +28,7 @@ export default function TaskFooter({ isCompleted = false }) {
           </>
         )}
         <button>
-          <DeleteIcon />
+          <DeleteIcon onClick={deleteHandler} />
         </button>
       </div>
       {isCompleted && <div className="task__footer__right">completed in</div>}
@@ -29,5 +37,6 @@ export default function TaskFooter({ isCompleted = false }) {
 }
 
 TaskFooter.propTypes = {
-  isCompleted: propTypes.bool
+  isCompleted: propTypes.bool,
+  taskId: propTypes.number
 };
