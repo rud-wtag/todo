@@ -23,6 +23,7 @@ function AddTask() {
       setTaskDetails('');
     }
   };
+
   const cancel = (e) => {
     e.preventDefault();
     dispatch(setIsAddingTask(false));

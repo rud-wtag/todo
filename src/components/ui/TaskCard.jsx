@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
 
-function TaskCard({ details, createdAt, isCompleted = false }) {
-  const completedClasses = isCompleted ? '--completed' : '';
+function TaskCard({ details = '', createdAt = '', isCompleted = true }) {
+  const classes = classNames({
+    task__details: true,
+    'task__details--completed': isCompleted
+  });
+
   return (
     <div className="task">
-      <div className={`Task__details${completedClasses}`}>{details}</div>
+      <div className={classes}>{details}</div>
       <p className="task__created">Created At: {createdAt}</p>
       <TaskFooter isCompleted={isCompleted} />
     </div>

@@ -13,3 +13,10 @@ Task.propTypes = {
     createdAt: PropTypes.string
   })
 };
+
+Task.defaultProps = {
+  task: {
+    taskDetails: '',
+    createdAt: ''
+  }
+};

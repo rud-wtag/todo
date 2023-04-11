@@ -15,3 +15,9 @@ Button.propTypes = {
   onClick: propTypes.func,
   className: propTypes.string
 };
+
+Button.defaultProps = {
+  children: null,
+  onClick: () => {},
+  className: 'btn'
+};

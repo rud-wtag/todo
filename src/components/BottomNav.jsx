@@ -6,10 +6,12 @@ import { ReactComponent as AddIcon } from 'assets/add.svg';
 import Button from './ui/Button';
 function BottomNav() {
   const dispatch = useDispatch();
+
   const setIsAdding = (e) => {
     e.preventDefault();
     dispatch(setIsAddingTask(true));
   };
+
   return (
     <div>
       <h1>Add Task</h1>
