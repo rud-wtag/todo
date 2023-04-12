@@ -4,9 +4,9 @@ import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import Button from 'components/ui/Button';
-import { deleteTodo } from 'redux/actions/TodoAction';
+import { deleteTodo, setTOComplete } from 'redux/actions/TodoAction';
 import { useDispatch } from 'react-redux';
-export default function TaskFooter({ isCompleted = false, taskId }) {
+export default function TaskFooter({ isCompleted = null, taskId }) {
   const dispatch = useDispatch();
 
   const deleteHandler = (e) => {
@@ -14,12 +14,17 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
     dispatch(deleteTodo(taskId));
   };
 
+  const completeHandler = (e) => {
+    e.preventDefault();
+    dispatch(setTOComplete(taskId));
+  };
+
   return (
     <div className="task__footer">
       <div className="task__footer__left">
         {!isCompleted && (
           <>
-            <Button>
+            <Button onClick={completeHandler}>
               <DoneIcon />
             </Button>
             <Button>
