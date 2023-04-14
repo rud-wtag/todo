@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
 
-function TaskCard({ details = '', createdAt = '', isCompleted = true }) {
+function TaskCard({ details = '', createdAt = '', isCompleted = false }) {
   const classes = classNames({
     task__details: true,
     'task__details--completed': isCompleted
