@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
 import { ENTER, ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
+import Button from 'components/ui/Button';
 
 function AddTask() {
   const [error, setError] = useState(null);
@@ -52,10 +53,10 @@ function AddTask() {
         />
         {error && <span>{error}</span>}
         <div className="task__footer">
-          <button type="submit">Add task</button>
-          <button onClick={cancel}>
+          <Button>Add Task</Button>
+          <Button onClick={cancel}>
             <DeleteIcon />
-          </button>
+          </Button>
         </div>
       </form>
     </div>
