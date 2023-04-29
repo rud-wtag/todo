@@ -1,4 +1,5 @@
 import { actionTypes } from 'redux/constants/ActionTypes';
+import { deleteTask } from 'utils/helpers/ReducerHelper';
 const { ADD_TODO, SET_ADD_TASK, DELETE_TODO } = actionTypes;
 const initialState = {
   isAddingTask: false,
@@ -19,7 +20,7 @@ export const todoReducer = (state = initialState, action) => {
         isAddingTask: action.payload
       };
     case DELETE_TODO:
-      newList = state.todos.filter((todo) => todo.id !== action.payload);
+      newList = deleteTask(state.todos, action.payload);
       return {
         ...state,
         todos: newList
