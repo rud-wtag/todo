@@ -1,6 +1,6 @@
 import { ERROR, OK } from 'utils/constants';
 export const getDate = () => {
-  const date = new Date().toISOString().slice(0, 10).split('-').reverse().join('.');
+  const date = new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
   return date;
 };
 
