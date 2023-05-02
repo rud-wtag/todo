@@ -1,7 +1,7 @@
 @use 'styles/abstracts/variables' as *;
 .task {
-  padding: 1.5rem;
   border: 0.1rem solid $border-color;
+  padding: 1.5rem;
 
   &__input {
     width: 100%;

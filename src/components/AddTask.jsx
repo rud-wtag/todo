@@ -15,14 +15,14 @@ function AddTask() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const validateDetails = validate(taskDetails);
+
     if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
-    } else {
-      setError(null);
-      dispatch(addTodo(validateDetails.text));
-      dispatch(setIsAddingTask(false));
-      setTaskDetails('');
     }
+    setError(null);
+    dispatch(addTodo(validateDetails.text));
+    dispatch(setIsAddingTask(false));
+    setTaskDetails('');
   };
 
   const cancel = (e) => {

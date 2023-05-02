@@ -1,8 +1,13 @@
 import React from 'react';
 import Button from 'components/ui/Button';
+import { LABEL_ALL, LABEL_COMPLETE, LABEL_INCOMPLETE } from 'utils/constants';
 
 function FilterButtons() {
-  const filterButtons = [{ label: 'All' }, { label: 'Incomplete' }, { label: 'Complete' }];
+  const filterButtons = [
+    { label: LABEL_ALL },
+    { label: LABEL_COMPLETE },
+    { label: LABEL_INCOMPLETE }
+  ];
 
   return (
     <>
