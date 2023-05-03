@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
+import PropTypes from 'prop-types';
 
 function TaskCard({ details = '', createdAt = '', isCompleted = false }) {
   const classes = classNames({

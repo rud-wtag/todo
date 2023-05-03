@@ -1,4 +1,3 @@
-import React from 'react';
 import TaskCard from 'components/ui/TaskCard';
 import PropTypes from 'prop-types';
 

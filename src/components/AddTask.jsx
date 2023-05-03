@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
+import Button from 'components/ui/Button';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
-import Button from 'components/ui/Button';
 
 function AddTask() {
   const [error, setError] = useState(null);
@@ -19,6 +19,7 @@ function AddTask() {
     if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
     }
+
     setError(null);
     dispatch(addTodo(validateDetails.text));
     dispatch(setIsAddingTask(false));

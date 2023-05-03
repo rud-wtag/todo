@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from 'components/ui/Button';
 import { LABEL_ALL, LABEL_COMPLETE, LABEL_INCOMPLETE } from 'utils/constants';
 

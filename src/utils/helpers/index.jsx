@@ -1,12 +1,7 @@
 import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
 export const getDate = () => {
-  const date = new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
-  return date;
-};
-
-export const getUid = () => {
-  return Date.now();
+  return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
 };
 
 export const sanitize = (text) => {

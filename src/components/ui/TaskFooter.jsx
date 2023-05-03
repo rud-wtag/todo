@@ -1,9 +1,8 @@
-import React from 'react';
-import propTypes from 'prop-types';
-import { ReactComponent as DoneIcon } from 'assets/ok.svg';
-import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
+import { ReactComponent as EditIcon } from 'assets/edit.svg';
+import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
+import propTypes from 'prop-types';
 
 export default function TaskFooter({ isCompleted = false }) {
   return (
@@ -19,9 +18,9 @@ export default function TaskFooter({ isCompleted = false }) {
             </Button>
           </>
         )}
-        <button>
+        <Button>
           <DeleteIcon />
-        </button>
+        </Button>
       </div>
       {isCompleted && <div className="task__footer__right">completed in</div>}
     </div>
