@@ -11,6 +11,7 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
 
   const deleteHandler = (e) => {
     e.preventDefault();
+    alert('Task will removed!');
     dispatch(deleteTodo(taskId));
   };
 
@@ -27,8 +28,8 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
             </Button>
           </>
         )}
-        <Button>
-          <DeleteIcon onClick={deleteHandler} />
+        <Button onClick={deleteHandler}>
+          <DeleteIcon />
         </Button>
       </div>
       {isCompleted && <div className="task__footer__right">completed in</div>}
