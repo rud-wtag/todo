@@ -1,16 +1,17 @@
-import React from 'react';
-import propTypes from 'prop-types';
-import { ReactComponent as DoneIcon } from 'assets/ok.svg';
-import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
+import { ReactComponent as EditIcon } from 'assets/edit.svg';
+import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
+import propTypes from 'prop-types';
 import { deleteTodo, setTOComplete } from 'redux/actions/TodoAction';
 import { useDispatch } from 'react-redux';
+
 export default function TaskFooter({ completedAt = null, taskId }) {
   const dispatch = useDispatch();
 
   const deleteHandler = (e) => {
     e.preventDefault();
+    alert('Task will removed!');
     dispatch(deleteTodo(taskId));
   };
 
@@ -32,9 +33,9 @@ export default function TaskFooter({ completedAt = null, taskId }) {
             </Button>
           </>
         )}
-        <button>
-          <DeleteIcon onClick={deleteHandler} />
-        </button>
+        <Button onClick={deleteHandler}>
+          <DeleteIcon />
+        </Button>
       </div>
       {completedAt && <div className="task__footer__right">completed in: {completedAt}</div>}
     </div>

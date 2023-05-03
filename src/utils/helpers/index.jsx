@@ -1,23 +1,26 @@
-import { ERROR, OK } from 'utils/constants';
+import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
+
 export const getDate = () => {
-  const date = new Date().toISOString().slice(0, 10).split('-').reverse().join('.');
-  return date;
+  return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
 };
 
-export const getUid = () => {
-  return Date.now();
-};
 export const sanitize = (text) => {
   return text.trim().replaceAll(/<\/?[^>]+(>|$)/gi, '');
 };
+
 export const validate = (text) => {
   if (text) {
     const sanitized = sanitize(text);
-    if (sanitized === '') return { status: ERROR, message: 'Please enter a valid description' };
-    return { status: OK, text: sanitized };
+
+    if (sanitized === '') {
+      return { status: RESPONSE_ERROR, message: 'Please enter a valid description' };
+    }
+
+    return { status: RESPONSE_OK, text: sanitized };
   }
+
   return {
-    status: ERROR,
+    status: RESPONSE_ERROR,
     message: 'can not be empty'
   };
 };
