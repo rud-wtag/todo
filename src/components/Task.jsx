@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
+import EditTask from 'components/EditTask';
 
 function Task({ task }) {
-  const { id, taskDetails, createdAt, completedAt } = task;
+  const { id, taskDetails, createdAt, completedAt, editing } = task;
 
   const classes = classNames({
     task__details: true,
@@ -12,11 +13,17 @@ function Task({ task }) {
   });
 
   return (
-    <div className="task">
-      <div className={classes}>{taskDetails}</div>
-      <p className="task__created">Created At: {createdAt}</p>
-      <TaskFooter completedAt={completedAt} taskId={id} />
-    </div>
+    <>
+      {editing ? (
+        <EditTask task={task} />
+      ) : (
+        <div className="task">
+          <div className={classes}>{taskDetails}</div>
+          <p className="task__created">Created At: {createdAt}</p>
+          <TaskFooter completedAt={completedAt} isEditing={editing} taskId={id} />
+        </div>
+      )}
+    </>
   );
 }
 
@@ -27,7 +34,8 @@ Task.propTypes = {
     taskDetails: PropTypes.string,
     createdAt: PropTypes.string,
     completedAt: PropTypes.string,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    editing: PropTypes.boolean
   })
 };
 
@@ -35,6 +43,7 @@ Task.defaultProps = {
   task: {
     taskDetails: '',
     createdAt: null,
-    completedAt: null
+    completedAt: null,
+    editing: false
   }
 };

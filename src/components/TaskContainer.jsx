@@ -7,6 +7,7 @@ import NoTaskPlaceholder from 'components/NoTaskPlaceholder';
 export default function TaskContainer() {
   const tasks = useSelector((state) => state.todoStates.todos);
   const isAddingTask = useSelector((state) => state.todoStates.isAddingTask);
+
   return (
     <>
       {!(tasks.length || isAddingTask) && <NoTaskPlaceholder />}
