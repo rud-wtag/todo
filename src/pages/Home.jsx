@@ -1,7 +1,6 @@
-import React from 'react';
+import BottomNav from 'components/BottomNav';
 import Heading from 'components/Heading';
 import TaskContainer from 'components/TaskContainer';
-import BottomNav from 'components/BottomNav';
 
 function Home() {
   return (

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import { useDispatch } from 'react-redux';
 import { setEditing, setIsAddingTask, setTOComplete } from 'redux/actions/TodoAction';
-import { ENTER, ERROR } from 'utils/constants';
+import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
 import Button from 'components/ui/Button';
 import { ReactComponent as DoneIcon } from 'assets/ok.svg';
@@ -17,7 +17,7 @@ function TaskForm({ isEditing = false, task, submitTask }) {
     e.preventDefault();
     const validateDetails = validate(taskDetails);
 
-    if (validateDetails.status === ERROR) {
+    if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
     } else {
       setError(null);
@@ -28,7 +28,7 @@ function TaskForm({ isEditing = false, task, submitTask }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === ENTER) {
+    if (e.key === KEY_ENTER) {
       handleSubmit(e);
     }
   };

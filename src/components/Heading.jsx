@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { ReactComponent as SearchIcon } from 'assets/search.svg';
 

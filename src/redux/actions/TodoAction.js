@@ -1,13 +1,14 @@
 import { actionTypes } from 'redux/constants/ActionTypes';
-import { getDate, getUid } from 'utils/helpers';
 import { INITIAL_TASK } from 'utils/constants';
+import { getDate } from 'utils/helpers';
+import { v4 as uuidv4 } from 'uuid';
 
 export const addTodo = (taskDetails) => {
   return {
     type: actionTypes.ADD_TODO,
     payload: {
       ...INITIAL_TASK,
-      id: getUid(),
+      id: uuidv4(),
       taskDetails: taskDetails,
       createdAt: getDate()
     }
