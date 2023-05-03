@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
+import Button from 'components/ui/Button';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
-import { ENTER, ERROR } from 'utils/constants';
+import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
-import Button from 'components/ui/Button';
 
 function AddTask() {
   const [error, setError] = useState(null);
@@ -15,14 +15,15 @@ function AddTask() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const validateDetails = validate(taskDetails);
-    if (validateDetails.status === ERROR) {
+
+    if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
-    } else {
-      setError(null);
-      dispatch(addTodo(validateDetails.text));
-      dispatch(setIsAddingTask(false));
-      setTaskDetails('');
     }
+
+    setError(null);
+    dispatch(addTodo(validateDetails.text));
+    dispatch(setIsAddingTask(false));
+    setTaskDetails('');
   };
 
   const cancel = (e) => {
@@ -31,7 +32,7 @@ function AddTask() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === ENTER) {
+    if (e.key === KEY_ENTER) {
       handleSubmit(e);
     }
   };

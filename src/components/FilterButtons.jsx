@@ -1,12 +1,22 @@
-import React from 'react';
-import Button from './ui/Button';
+import Button from 'components/ui/Button';
+import { LABEL_ALL, LABEL_COMPLETE, LABEL_INCOMPLETE } from 'utils/constants';
 
 function FilterButtons() {
+  const filterButtons = [
+    { label: LABEL_ALL },
+    { label: LABEL_COMPLETE },
+    { label: LABEL_INCOMPLETE }
+  ];
+
   return (
     <>
-      <Button className="bottom_nav__right__btn">All</Button>
-      <Button className="bottom_nav__right__btn">Incomplete</Button>
-      <Button className="bottom_nav__right__btn">Complete</Button>
+      {filterButtons.map((button) => {
+        return (
+          <Button key={button.label} className="bottom_nav__right__btn">
+            {button.label}
+          </Button>
+        );
+      })}
     </>
   );
 }
