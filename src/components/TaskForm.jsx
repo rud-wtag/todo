@@ -1,12 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
+import { ReactComponent as DoneIcon } from 'assets/ok.svg';
+import Button from 'components/ui/Button';
+import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setEditing, setIsAddingTask, setTOComplete } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
-import Button from 'components/ui/Button';
-import { ReactComponent as DoneIcon } from 'assets/ok.svg';
-import PropTypes from 'prop-types';
+
 function TaskForm({ isEditing = false, task, submitTask }) {
   const [error, setError] = useState(null);
   const [taskDetails, setTaskDetails] = useState(task?.taskDetails);
@@ -62,19 +63,21 @@ function TaskForm({ isEditing = false, task, submitTask }) {
         />
         {error && <span>{error}</span>}
         <div className="task__footer">
-          {isEditing ? (
-            <>
-              <Button>Save</Button>
-              <Button onClick={completeHandler}>
-                <DoneIcon />
-              </Button>
-            </>
-          ) : (
-            <Button>Add Task</Button>
-          )}
-          <Button onClick={cancel}>
-            <DeleteIcon />
-          </Button>
+          <div className="task__footer__left">
+            {isEditing ? (
+              <>
+                <Button>Save</Button>
+                <Button onClick={completeHandler}>
+                  <DoneIcon />
+                </Button>
+              </>
+            ) : (
+              <Button>Add Task</Button>
+            )}
+            <Button onClick={cancel}>
+              <DeleteIcon />
+            </Button>
+          </div>
         </div>
       </form>
     </div>
