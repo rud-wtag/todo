@@ -1,14 +1,15 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import TaskFooter from 'components/ui/TaskFooter';
 import EditTask from 'components/EditTask';
+import TaskFooter from 'components/ui/TaskFooter';
+import PropTypes from 'prop-types';
 
 function Task({ task }) {
   const { id, taskDetails, createdAt, completedAt, editing } = task;
 
   const classes = classNames({
     task__details: true,
-    'task__details--completed': completedAt
+    'task__details--completed': completedAt,
+    'text-strike': completedAt
   });
 
   return (
