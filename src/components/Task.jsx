@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
+import PropTypes from 'prop-types';
 
 function Task({ task }) {
   const { id, taskDetails, createdAt, completedAt } = task;
 
   const classes = classNames({
     task__details: true,
-    'task__details--completed': completedAt
+    'task__details--completed': completedAt,
+    'text-strike': completedAt
   });
 
   return (
