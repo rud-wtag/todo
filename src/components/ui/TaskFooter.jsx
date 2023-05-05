@@ -5,6 +5,7 @@ import Button from 'components/ui/Button';
 import propTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, setEditing, setTOComplete } from 'redux/actions/TodoAction';
+import { daysBetweenDate } from 'utils/helpers';
 
 export default function TaskFooter({ completedAt = null, taskId }) {
   const dispatch = useDispatch();
@@ -42,7 +43,9 @@ export default function TaskFooter({ completedAt = null, taskId }) {
           <DeleteIcon />
         </Button>
       </div>
-      {completedAt && <div className="task__footer__right">completed in: {completedAt}</div>}
+      {completedAt && (
+        <div className="task__footer__right">completed in: {daysBetweenDate(completedAt)}days</div>
+      )}
     </div>
   );
 }
