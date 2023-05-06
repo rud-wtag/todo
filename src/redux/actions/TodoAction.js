@@ -49,3 +49,10 @@ export const setEditing = (taskId) => {
     payload: taskId
   };
 };
+
+export const nextPage = (todos) => {
+  return {
+    type: actionTypes.NEXT_PAGE,
+    payload: todos
+  };
+};

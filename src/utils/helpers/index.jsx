@@ -29,3 +29,11 @@ export const validate = (text) => {
     message: 'can not be empty'
   };
 };
+
+export const paginationLabel = (tasks, currentPage) => {
+  const tasksPerPage = 9;
+  const indexOfLastTask = currentPage * tasksPerPage;
+  console.log(tasks.length, indexOfLastTask);
+  if (tasks.length < indexOfLastTask) return 'Show Less';
+  return 'Show More';
+};
