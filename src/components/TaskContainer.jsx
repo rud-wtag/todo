@@ -3,7 +3,7 @@ import NoTaskPlaceholder from 'components/NoTaskPlaceholder';
 import Task from 'components/Task';
 import Button from 'components/ui/Button';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { nextPage } from 'redux/actions/TodoAction';
 import { paginationLabel } from 'utils/helpers';
 import { nextPage, paginate, taskManipulation } from 'utils/helpers/ReducerHelper';

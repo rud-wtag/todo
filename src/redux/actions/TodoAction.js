@@ -56,3 +56,10 @@ export const nextPage = (todos) => {
     payload: todos
   };
 };
+
+export const toast = (toastState) => {
+  return {
+    type: actionTypes.TOAST_MESSAGE,
+    payload: toastState
+  };
+};

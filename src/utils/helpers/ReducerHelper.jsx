@@ -79,7 +79,7 @@ export const paginate = (tasks, currentPage) => {
   return tasks.slice(0, indexOfLastTask);
 };
 
-export const taskManipulation = (tasks, filter, search, currentPage) => {
+export const taskManipulation = (tasks, filter, search) => {
   let todos = filterTasks(filter.filterState, tasks);
   if (search.query) {
     todos = searchTasks(tasks, search.query);

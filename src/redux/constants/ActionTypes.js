@@ -5,7 +5,8 @@ export const actionTypes = {
   SET_ADD_TASK: 'SET_ADD_TASK',
   COMPLETE_TASK: 'COMPLETE_TASK',
   SET_EDIT: 'SET_EDIT',
-  NEXT_PAGE: 'NEXT_PAGE'
+  NEXT_PAGE: 'NEXT_PAGE',
+  TOAST_MESSAGE: 'TOAST_MESSAGE'
 };
 
 export const paginationActionTypes = {
