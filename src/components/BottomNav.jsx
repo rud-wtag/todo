@@ -1,15 +1,16 @@
 import { ReactComponent as AddIcon } from 'assets/add.svg';
 import FilterButtons from 'components/FilterButtons';
+import Button from 'components/ui/Button';
 import { useDispatch } from 'react-redux';
 import { setIsAddingTask } from 'redux/actions/TodoAction';
-import Button from './ui/Button';
+
 function BottomNav() {
   const dispatch = useDispatch();
 
-  const setIsAdding = (e) => {
+  function setIsAdding(e) {
     e.preventDefault();
     dispatch(setIsAddingTask(true));
-  };
+  }
 
   return (
     <div>
