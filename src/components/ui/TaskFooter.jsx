@@ -3,24 +3,30 @@ import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
 import propTypes from 'prop-types';
-import { deleteTodo } from 'redux/actions/TodoAction';
 import { useDispatch } from 'react-redux';
+import { deleteTodo, setTOComplete } from 'redux/actions/TodoAction';
+import { daysBetweenDate } from 'utils/helpers';
 
-export default function TaskFooter({ isCompleted = false, taskId }) {
+export default function TaskFooter({ completedAt = null, taskId }) {
   const dispatch = useDispatch();
 
-  const deleteHandler = (e) => {
+  function onDelete(e) {
     e.preventDefault();
     alert('Task will removed!');
     dispatch(deleteTodo(taskId));
-  };
+  }
+
+  function onComplete(e) {
+    e.preventDefault();
+    dispatch(setTOComplete(taskId));
+  }
 
   return (
     <div className="task__footer">
       <div className="task__footer__left">
-        {!isCompleted && (
+        {!completedAt && (
           <>
-            <Button>
+            <Button onClick={onComplete}>
               <DoneIcon />
             </Button>
             <Button>
@@ -28,16 +34,18 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
             </Button>
           </>
         )}
-        <Button onClick={deleteHandler}>
+        <Button onClick={onDelete}>
           <DeleteIcon />
         </Button>
       </div>
-      {isCompleted && <div className="task__footer__right">completed in</div>}
+      {completedAt && (
+        <div className="task__footer__right">completed in: {daysBetweenDate(completedAt)}days</div>
+      )}
     </div>
   );
 }
 
 TaskFooter.propTypes = {
-  isCompleted: propTypes.bool,
+  completedAt: propTypes.string,
   taskId: propTypes.number
 };

@@ -5,6 +5,11 @@ export const getDate = () => {
   return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
 };
 
+export const daysBetweenDate = (date) => {
+  const diffTime = Math.abs(new Date() - date);
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+};
+
 export const sanitize = (text) => {
   return DOMPurify.sanitize(text);
 };
