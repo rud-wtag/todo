@@ -14,7 +14,7 @@ function TaskForm({ isEditing = false, task, submitTask }) {
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const validateDetails = validate(taskDetails);
 
@@ -28,20 +28,25 @@ function TaskForm({ isEditing = false, task, submitTask }) {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const onKeyDown = (e) => {
     if (e.key === KEY_ENTER) {
-      handleSubmit(e);
+      onSubmit(e);
     }
   };
 
-  const cancel = (e) => {
+  const onCancel = (e) => {
     e.preventDefault();
     dispatch(setIsAddingTask(false));
   };
 
-  const completeHandler = (e) => {
+  function onTyping(e) {
     e.preventDefault();
-    handleSubmit(e);
+    setTaskDetails(e.target.value);
+  }
+
+  const onComplete = (e) => {
+    e.preventDefault();
+    onSubmit(e);
     dispatch(setEditing({ taskId: task.id, editing: false }));
     dispatch(setTOComplete(task.id));
   };
@@ -52,12 +57,12 @@ function TaskForm({ isEditing = false, task, submitTask }) {
 
   return (
     <div className="task">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <textarea
           className="task__input"
           ref={textAreaRef}
-          onChange={(e) => setTaskDetails(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onChange={onTyping}
+          onKeyDown={onKeyDown}
           required
           value={taskDetails}
         />
@@ -67,14 +72,14 @@ function TaskForm({ isEditing = false, task, submitTask }) {
             {isEditing ? (
               <>
                 <Button>Save</Button>
-                <Button onClick={completeHandler}>
+                <Button onClick={onComplete}>
                   <DoneIcon />
                 </Button>
               </>
             ) : (
               <Button>Add Task</Button>
             )}
-            <Button onClick={cancel}>
+            <Button onClick={onCancel}>
               <DeleteIcon />
             </Button>
           </div>

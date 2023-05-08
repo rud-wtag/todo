@@ -1,19 +1,18 @@
-import React from 'react';
-import TaskForm from './TaskForm';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { editTodo, setEditing } from 'redux/actions/TodoAction';
+import TaskForm from 'component/TaskForm';
 function EditTask({ task }) {
   const dispatch = useDispatch();
 
-  const submitTask = (taskDetails) => {
+  function onSubmit(taskDetails) {
     dispatch(editTodo({ taskId: task.id, taskDetails: taskDetails }));
     dispatch(setEditing({ taskId: task.id, editing: false }));
-  };
+  }
 
   return (
     <div>
-      <TaskForm isEditing={true} task={task} submitTask={submitTask} />
+      <TaskForm isEditing={true} task={task} submitTask={onSubmit} />
     </div>
   );
 }
