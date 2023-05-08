@@ -10,21 +10,21 @@ import { daysBetweenDate } from 'utils/helpers';
 export default function TaskFooter({ completedAt = null, taskId }) {
   const dispatch = useDispatch();
 
-  const onDelete = (e) => {
+  function onDelete(e) {
     e.preventDefault();
     alert('Task will removed!');
     dispatch(deleteTodo(taskId));
-  };
+  }
 
-  const onComplete = (e) => {
+  function onComplete(e) {
     e.preventDefault();
     dispatch(setTOComplete(taskId));
-  };
+  }
 
-  const onEdit = (e) => {
+  function onEdit(e) {
     e.preventDefault();
     dispatch(setEditing({ taskId: taskId, editing: true }));
-  };
+  }
 
   return (
     <div className="task__footer">
