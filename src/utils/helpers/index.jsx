@@ -1,3 +1,4 @@
+import * as DOMPurify from 'dompurify';
 import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
 export const getDate = () => {
@@ -10,7 +11,7 @@ export const daysBetweenDate = (date) => {
 };
 
 export const sanitize = (text) => {
-  return text.trim().replaceAll(/<\/?[^>]+(>|$)/gi, '');
+  return DOMPurify.sanitize(text);
 };
 
 export const validate = (text) => {

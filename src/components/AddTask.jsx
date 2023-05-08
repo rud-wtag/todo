@@ -1,18 +1,17 @@
-import React from 'react';
+import TaskForm from 'components/TaskForm';
 import { useDispatch } from 'react-redux';
 import { addTodo } from 'redux/actions/TodoAction';
-import TaskForm from 'components/TaskForm';
 
 function AddTask() {
   const dispatch = useDispatch();
 
-  const submitTask = (taskDetails) => {
+  const onSubmit = (taskDetails) => {
     dispatch(addTodo(taskDetails));
   };
 
   return (
     <>
-      <TaskForm submitTask={submitTask} />
+      <TaskForm submitTask={onSubmit} />
     </>
   );
 }
