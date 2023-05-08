@@ -5,14 +5,14 @@ import { addTodo, toast } from 'redux/actions/TodoAction';
 function AddTask() {
   const dispatch = useDispatch();
 
-  const submitTask = (taskDetails) => {
+  const onSubmit = (taskDetails) => {
     dispatch(addTodo(taskDetails));
     dispatch(toast({ type: 'success', message: 'Task added successfully' }));
   };
 
   return (
     <>
-      <TaskForm submitTask={submitTask} />
+      <TaskForm submitTask={onSubmit} />
     </>
   );
 }
