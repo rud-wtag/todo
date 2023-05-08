@@ -3,17 +3,17 @@ import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
 import propTypes from 'prop-types';
-import { deleteTodo } from 'redux/actions/TodoAction';
 import { useDispatch } from 'react-redux';
+import { deleteTodo } from 'redux/actions/TodoAction';
 
 export default function TaskFooter({ isCompleted = false, taskId }) {
   const dispatch = useDispatch();
 
-  const deleteHandler = (e) => {
+  function onDelete(e) {
     e.preventDefault();
     alert('Task will removed!');
     dispatch(deleteTodo(taskId));
-  };
+  }
 
   return (
     <div className="task__footer">
@@ -28,7 +28,7 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
             </Button>
           </>
         )}
-        <Button onClick={deleteHandler}>
+        <Button onClick={onDelete}>
           <DeleteIcon />
         </Button>
       </div>
