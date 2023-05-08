@@ -4,6 +4,7 @@ import { setIsAddingTask } from 'redux/actions/TodoAction';
 
 function NoTaskPlaceholder() {
   const dispatch = useDispatch();
+
   const onIsAddingTask = () => {
     dispatch(setIsAddingTask(true));
   };

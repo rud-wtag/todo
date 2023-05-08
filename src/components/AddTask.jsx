@@ -18,6 +18,7 @@ function AddTask() {
 
     if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
+      return;
     }
 
     setError(null);
