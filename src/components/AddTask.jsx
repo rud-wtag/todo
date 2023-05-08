@@ -3,7 +3,7 @@ import Button from 'components/ui/Button';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
-import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
+import { KEY_ENTER, RESPONSE_OK } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
 
 function AddTask() {
@@ -16,14 +16,14 @@ function AddTask() {
     e.preventDefault();
     const validateDetails = validate(taskDetails);
 
-    if (validateDetails.status === RESPONSE_ERROR) {
-      setError(validateDetails.message);
+    if (validateDetails.status === RESPONSE_OK) {
+      setError(null);
+      dispatch(addTodo(validateDetails.text));
+      dispatch(setIsAddingTask(false));
+      setTaskDetails('');
     }
 
-    setError(null);
-    dispatch(addTodo(validateDetails.text));
-    dispatch(setIsAddingTask(false));
-    setTaskDetails('');
+    setError(validateDetails.message);
   }
 
   function onTyping(e) {
