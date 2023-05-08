@@ -7,10 +7,10 @@ import { setIsAddingTask } from 'redux/actions/TodoAction';
 function BottomNav() {
   const dispatch = useDispatch();
 
-  const setIsAdding = (e) => {
+  function setIsAdding(e) {
     e.preventDefault();
     dispatch(setIsAddingTask(true));
-  };
+  }
 
   return (
     <div>

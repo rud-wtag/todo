@@ -4,13 +4,14 @@ import { setIsAddingTask } from 'redux/actions/TodoAction';
 
 function NoTaskPlaceholder() {
   const dispatch = useDispatch();
-  const handleIsAddingTask = () => {
+
+  const onIsAddingTask = () => {
     dispatch(setIsAddingTask(true));
   };
 
   return (
     <div className="no_task">
-      <div onClick={handleIsAddingTask} className="no_task__svg">
+      <div onClick={onIsAddingTask} className="no_task__svg">
         <AddTaskSVG />
       </div>
       <p className="no_task__text">You didn’t add any task. Please, add one.</p>

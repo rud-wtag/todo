@@ -12,30 +12,35 @@ function AddTask() {
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  function onSubmit(e) {
     e.preventDefault();
     const validateDetails = validate(taskDetails);
 
     if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
+      return;
     }
 
     setError(null);
     dispatch(addTodo(validateDetails.text));
     dispatch(setIsAddingTask(false));
     setTaskDetails('');
-  };
+  }
 
-  const cancel = (e) => {
+  function onTyping(e) {
+    setTaskDetails(e.target.value);
+  }
+
+  function onCancel(e) {
     e.preventDefault();
     dispatch(setIsAddingTask(false));
-  };
+  }
 
-  const handleKeyDown = (e) => {
+  function onKeyDown(e) {
     if (e.key === KEY_ENTER) {
-      handleSubmit(e);
+      onSubmit(e);
     }
-  };
+  }
 
   useEffect(() => {
     textAreaRef.current.focus();
@@ -43,19 +48,19 @@ function AddTask() {
 
   return (
     <div className="task">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <textarea
           className="task__input"
           ref={textAreaRef}
-          onChange={(e) => setTaskDetails(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onChange={onTyping}
+          onKeyDown={onKeyDown}
           required
           value={taskDetails}
         />
         {error && <span>{error}</span>}
         <div className="task__footer">
           <Button>Add Task</Button>
-          <Button onClick={cancel}>
+          <Button onClick={onCancel}>
             <DeleteIcon />
           </Button>
         </div>
