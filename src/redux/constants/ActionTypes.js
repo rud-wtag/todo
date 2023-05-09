@@ -10,3 +10,10 @@ export const actionTypes = {
 export const paginationActionTypes = {
   LOAD_MORE: 'LOAD_MORE'
 };
+
+export const filterActionTypes = {
+  SET_FILTER: 'SET_FILTER',
+  ALL: 'All',
+  INCOMPLETE: 'Incomplete',
+  COMPLETE: 'Complete'
+};
