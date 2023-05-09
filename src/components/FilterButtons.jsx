@@ -5,7 +5,6 @@ import { LABEL_ALL, LABEL_COMPLETE, LABEL_INCOMPLETE } from 'utils/constants';
 
 function FilterButtons() {
   const dispatch = useDispatch();
-
   const filterButtons = [
     { label: LABEL_ALL },
     { label: LABEL_COMPLETE },

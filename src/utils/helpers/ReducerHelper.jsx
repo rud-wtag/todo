@@ -71,6 +71,10 @@ const filterTasks = (tasks, filterState = ALL) => {
   }
 };
 
+const searchTasks = (tasks, query) => {
+  return tasks.filter((task) => task.taskDetails.includes(query));
+};
+
 export const paginate = (tasks, currentPage) => {
   const tasksPerPage = 9;
   const indexOfLastTask = currentPage * tasksPerPage;
@@ -78,6 +82,15 @@ export const paginate = (tasks, currentPage) => {
   return tasks.slice(0, indexOfLastTask);
 };
 
-export const searchAndFilter = (tasks, filter) => {
-  return filterTasks(tasks, filter.filterState);
+export const searchAndFilter = (tasks, filter, search) => {
+  let todos;
+
+  if (search.query) {
+    todos = searchTasks(tasks, search.query);
+  } else {
+    todos = tasks;
+  }
+
+  todos = filterTasks(todos, filter.filterState);
+  return todos;
 };
