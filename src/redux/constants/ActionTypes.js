@@ -6,3 +6,7 @@ export const actionTypes = {
   COMPLETE_TASK: 'COMPLETE_TASK',
   SET_EDIT: 'SET_EDIT'
 };
+
+export const paginationActionTypes = {
+  LOAD_MORE: 'LOAD_MORE'
+};
