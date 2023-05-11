@@ -3,14 +3,14 @@ import TaskFooter from 'components/ui/TaskFooter';
 import PropTypes from 'prop-types';
 
 function TaskCard({ details = '', createdAt = '', isCompleted = false }) {
-  const classes = classNames({
+  const taskCardClasses = classNames({
     task__details: true,
     'task__details--completed': isCompleted
   });
 
   return (
     <div className="task">
-      <div className={classes}>{details}</div>
+      <div className={taskCardClasses}>{details}</div>
       <p className="task__created">Created At: {createdAt}</p>
       <TaskFooter isCompleted={isCompleted} />
     </div>
