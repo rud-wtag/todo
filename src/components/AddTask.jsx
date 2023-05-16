@@ -12,8 +12,8 @@ function AddTask() {
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit(event) {
+    event.preventDefault();
     const validateDetails = validate(taskDetails);
 
     if (validateDetails.status === RESPONSE_ERROR) {
@@ -27,18 +27,18 @@ function AddTask() {
     setTaskDetails('');
   }
 
-  function onTyping(e) {
-    setTaskDetails(e.target.value);
+  function onTyping(event) {
+    setTaskDetails(event.target.value);
   }
 
-  function onCancel(e) {
-    e.preventDefault();
+  function onCancel(event) {
+    event.preventDefault();
     dispatch(setIsAddingTask(false));
   }
 
-  function onKeyDown(e) {
-    if (e.key === KEY_ENTER) {
-      onSubmit(e);
+  function onKeyDown(event) {
+    if (event.key === KEY_ENTER) {
+      onSubmit(event);
     }
   }
 
