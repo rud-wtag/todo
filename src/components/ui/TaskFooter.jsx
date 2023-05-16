@@ -9,8 +9,8 @@ import { deleteTodo } from 'redux/actions/TodoAction';
 export default function TaskFooter({ isCompleted = false, taskId }) {
   const dispatch = useDispatch();
 
-  function onDelete(e) {
-    e.preventDefault();
+  function onDelete(event) {
+    event.preventDefault();
     alert('Task will removed!');
     dispatch(deleteTodo(taskId));
   }

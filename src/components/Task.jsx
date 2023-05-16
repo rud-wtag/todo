@@ -5,14 +5,14 @@ import TaskFooter from 'components/ui/TaskFooter';
 function Task({ task }) {
   const { id, taskDetails, createdAt, isCompleted } = task;
 
-  const classes = classNames({
+  const taskDetailsClasses = classNames({
     task__details: true,
     'task__details--completed': isCompleted
   });
 
   return (
     <div className="task">
-      <div className={classes}>{taskDetails}</div>
+      <div className={taskDetailsClasses}>{taskDetails}</div>
       <p className="task__created">Created At: {createdAt}</p>
       <TaskFooter isCompleted={isCompleted} taskId={id} />
     </div>
