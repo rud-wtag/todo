@@ -13,7 +13,7 @@ function BottomNav() {
   }
 
   return (
-    <div>
+    <>
       <h1>Add Task</h1>
       <div className="bottom_nav">
         <div className="bottom_nav__left">
@@ -25,7 +25,7 @@ function BottomNav() {
           <FilterButtons />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
