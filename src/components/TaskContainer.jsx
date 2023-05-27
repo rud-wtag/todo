@@ -28,15 +28,19 @@ export default function TaskContainer() {
   return (
     <>
       {isTasksAvailable && <NoTaskPlaceholder />}
-      <div className="task_container">
+      <div className="container">
         {isAddingTask && <AddTask />}
-        {paginate(todos, currentPage).map((task) => (
-          <Task task={task} key={task.id} />
-        ))}
+        <div className="task_container">
+          {paginate(todos, currentPage).map((task) => (
+            <Task task={task} key={task.id} />
+          ))}
+        </div>
+        {isPaginationAvailable && (
+          <Button className="btn btn-primary--dark task_container__more_btn" onClick={loadMore}>
+            {paginationLabel(todos, currentPage)}
+          </Button>
+        )}
       </div>
-      {isPaginationAvailable && (
-        <Button onClick={loadMore}>{paginationLabel(todos, currentPage)}</Button>
-      )}
     </>
   );
 }

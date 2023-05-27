@@ -1,3 +1,29 @@
-.text-strike {
-  text-decoration: line-through;
+@use 'styles/abstracts/variables' as *;
+.btn {
+  border-radius: 0.5rem;
+  cursor: pointer;
+  &-primary {
+    background: $color-white;
+    padding: 0.9rem 1.3rem;
+    border: 1px solid #dde2ff;
+    &--dark {
+      background: black;
+      color: $color-white;
+    }
+  }
+  &-secondary {
+    background: $color-primary;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    color: $color-white;
+  }
+  &-icon {
+    border: none;
+    background: $color-white;
+    svg {
+      height: 2.4rem;
+      width: 2.4rem;
+      background: $color-white;
+    }
+  }
 }

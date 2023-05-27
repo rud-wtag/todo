@@ -1,4 +1,30 @@
+@use 'styles/abstracts' as *;
+
 .bottom_nav {
+  &__wrapper {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  
   display: flex;
+
+  @include respond(phone) {
+    flex-direction: column;
+  }
+
   justify-content: space-between;
+  margin: 2.8rem 0 3.4rem 0;
+  &__right {
+    font-size: inherit;
+
+    &__btn:nth-child(2) {
+      margin-inline: 2rem;
+    }
+
+    @include respond(phone) {
+      margin-left: auto;
+      margin-top: 1.5rem;
+    }
+  }
 }

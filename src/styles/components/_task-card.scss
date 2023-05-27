@@ -2,12 +2,42 @@
 .task {
   border: 0.1rem solid $border-color;
   padding: 1.5rem;
+  background: $color-white;
+
+  &__details {
+    font-weight: 700;
+    font-size: 24px;
+    word-wrap: break-word;
+    &--completed {
+      color: $color-aqua;
+      text-decoration: line-through;
+    }
+  }
+
+  &__created {
+    color: $color-gray;
+  }
 
   &__input {
     width: 100%;
+    border: 0.3rem solid $color-border-active;
+    min-height: 8rem;
+    font-size: $default-font;
+    &:focus {
+      outline: none;
+    }
   }
+
   &__footer {
     display: flex;
     justify-content: space-between;
+    &__left {
+      button {
+        margin-left: 2.6rem;
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
   }
 }

@@ -8,8 +8,7 @@ function Task({ task }) {
 
   const classes = classNames({
     task__details: true,
-    'task__details--completed': completedAt,
-    'text-strike': completedAt
+    'task__details--completed': completedAt
   });
 
   return (

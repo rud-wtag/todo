@@ -5,11 +5,9 @@ import TaskContainer from 'components/TaskContainer';
 function Home() {
   return (
     <div className="home">
-      <div className="container">
-        <Heading />
-        <BottomNav />
-        <TaskContainer />
-      </div>
+      <Heading />
+      <BottomNav />
+      <TaskContainer />
     </div>
   );
 }

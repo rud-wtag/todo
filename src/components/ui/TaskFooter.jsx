@@ -31,20 +31,22 @@ export default function TaskFooter({ completedAt = null, taskId }) {
       <div className="task__footer__left">
         {!completedAt && (
           <>
-            <Button onClick={onComplete}>
+            <Button variant="icon" onClick={onComplete}>
               <DoneIcon />
             </Button>
-            <Button onClick={onEdit}>
+            <Button variant="icon" onClick={onEdit}>
               <EditIcon />
             </Button>
           </>
         )}
-        <Button onClick={onDelete}>
+        <Button variant="icon" onClick={onDelete}>
           <DeleteIcon />
         </Button>
       </div>
       {completedAt && (
-        <div className="task__footer__right">completed in: {daysBetweenDate(completedAt)}days</div>
+        <div className="task__footer__right">
+          <Button variant="secondary">completed in: {daysBetweenDate(completedAt)}days</Button>
+        </div>
       )}
     </div>
   );

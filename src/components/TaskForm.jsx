@@ -72,14 +72,14 @@ function TaskForm({ isEditing = false, task, submitTask }) {
             {isEditing ? (
               <>
                 <Button>Save</Button>
-                <Button onClick={onComplete}>
+                <Button variant="icon" onClick={onComplete}>
                   <DoneIcon />
                 </Button>
               </>
             ) : (
-              <Button>Add Task</Button>
+              <Button variant="secondary">Add Task</Button>
             )}
-            <Button onClick={onCancel}>
+            <Button variant="icon" onClick={onCancel}>
               <DeleteIcon />
             </Button>
           </div>
