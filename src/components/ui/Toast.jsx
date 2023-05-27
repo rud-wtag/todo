@@ -9,7 +9,7 @@ function Toast() {
     setShow(toast.message !== null);
     setTimeout(() => {
       setShow(false);
-    }, 1000);
+    }, 10000);
   }, [toast]);
   return <>{show && <div className={`toast toast--${toast.type}`}>{toast.message}</div>}</>;
 }
