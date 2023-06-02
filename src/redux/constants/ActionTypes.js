@@ -10,8 +10,7 @@ export const actionTypes = {
 };
 
 export const paginationActionTypes = {
-  LOAD_MORE: 'LOAD_MORE',
-  PAGINATION_RESET: 'RESET_PAGINATION'
+  LOAD_MORE: 'LOAD_MORE'
 };
 
 export const filterActionTypes = {

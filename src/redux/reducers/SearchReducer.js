@@ -6,7 +6,6 @@ const initialState = {
 };
 
 export const searchReducer = (state = initialState, action) => {
-  //   console.log(action);
   switch (action.type) {
     case SET_SEARCH:
       return {

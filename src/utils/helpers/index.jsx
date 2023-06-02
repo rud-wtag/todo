@@ -1,5 +1,5 @@
 import * as DOMPurify from 'dompurify';
-import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
+import { LABEL_SHOW_LESS, LABEL_SHOW_MORE, RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
 export const getDate = () => {
   return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
@@ -34,7 +34,6 @@ export const validate = (text) => {
 export const paginationLabel = (tasks, currentPage) => {
   const tasksPerPage = 9;
   const indexOfLastTask = currentPage * tasksPerPage;
-  console.log(tasks.length, indexOfLastTask);
-  if (tasks.length < indexOfLastTask) return 'Show Less';
-  return 'Show More';
+  if (tasks.length < indexOfLastTask) return LABEL_SHOW_LESS;
+  return LABEL_SHOW_MORE;
 };

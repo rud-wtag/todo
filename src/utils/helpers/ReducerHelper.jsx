@@ -1,9 +1,10 @@
 import { filterActionTypes } from 'redux/constants/ActionTypes';
+import { TASK_PER_PAGE } from 'utils/constants';
+
 const { ALL, COMPLETE, INCOMPLETE } = filterActionTypes;
 
 export const deleteTask = (todos, payload) => {
-  const newList = todos.filter((todo) => todo.id !== payload);
-  return newList;
+  return todos.filter((todo) => todo.id !== payload);
 };
 
 export const completeTask = (todos, payload) => {
@@ -44,15 +45,16 @@ export const setEditMode = (todos, task) => {
   });
   return newList;
 };
+
 export const nextPage = (todos, currentPage) => {
-  const tasksPerPage = 9;
+  const tasksPerPage = TASK_PER_PAGE;
   const indexOfLastTask = currentPage * tasksPerPage;
-  console.log(todos.length, currentPage);
+
   if (todos.length > indexOfLastTask) return currentPage + 1;
   return 1;
 };
 
-const filterTasks = (filterState = ALL, tasks) => {
+const filterTasks = (tasks, filterState = ALL) => {
   switch (filterState) {
     case ALL:
       return tasks;
@@ -76,13 +78,19 @@ const searchTasks = (tasks, query) => {
 export const paginate = (tasks, currentPage) => {
   const tasksPerPage = 9;
   const indexOfLastTask = currentPage * tasksPerPage;
+
   return tasks.slice(0, indexOfLastTask);
 };
 
-export const taskManipulation = (tasks, filter, search) => {
-  let todos = filterTasks(filter.filterState, tasks);
+export const searchAndFilter = (tasks, filter, search) => {
+  let todos;
+
   if (search.query) {
     todos = searchTasks(tasks, search.query);
+  } else {
+    todos = tasks;
   }
+
+  todos = filterTasks(todos, filter.filterState);
   return todos;
 };

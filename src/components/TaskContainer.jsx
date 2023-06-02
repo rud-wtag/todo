@@ -4,9 +4,9 @@ import Task from 'components/Task';
 import Button from 'components/ui/Button';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import { nextPage } from 'redux/actions/TodoAction';
 import { paginationLabel } from 'utils/helpers';
-import { nextPage, paginate, taskManipulation } from 'utils/helpers/ReducerHelper';
+import { nextPage, paginate, searchAndFilter } from 'utils/helpers/ReducerHelper';
+
 export default function TaskContainer() {
   const tasks = useSelector((state) => state.todoStates.todos);
   const [todos, setTodos] = useState(tasks);
@@ -17,12 +17,12 @@ export default function TaskContainer() {
   const isTasksAvailable = !(tasks.length || isAddingTask);
   const isPaginationAvailable = todos.length > 9;
 
-  const loadMore = () => {
+  function loadMore() {
     setCurrentPage(nextPage(todos, currentPage));
-  };
+  }
 
   useEffect(() => {
-    setTodos(taskManipulation(tasks, filter, search, currentPage));
+    setTodos(searchAndFilter(tasks, filter, search));
   }, [tasks, filter, search, currentPage]);
 
   return (

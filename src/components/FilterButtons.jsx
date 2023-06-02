@@ -10,11 +10,12 @@ function FilterButtons() {
     { label: LABEL_COMPLETE },
     { label: LABEL_INCOMPLETE }
   ];
+
   function onFilter(event, label) {
-    console.log(label);
     event.preventDefault();
     dispatch(setFilter(label));
   }
+
   return (
     <>
       {filterButtons.map((button) => {
