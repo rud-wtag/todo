@@ -1,4 +1,5 @@
 @use 'styles/abstracts/variables' as *;
+
 .task {
   border: 0.1rem solid $border-color;
   padding: 1.5rem;
@@ -15,6 +16,7 @@
   }
 
   &__created {
+    margin-top: 0.9rem;
     color: $color-gray;
   }
 
@@ -29,8 +31,10 @@
   }
 
   &__footer {
+    margin-top: 2.4rem;
     display: flex;
     justify-content: space-between;
+
     &__left {
       button {
         margin-left: 2.6rem;
