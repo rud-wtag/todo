@@ -1,14 +1,20 @@
+@use 'styles/abstracts' as *;
+
 .toast {
-  height: 4rem;
+  height: 5.5rem;
   padding: 1rem;
   width: 30%;
   margin: auto;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  color: $color-white;
+  @include flexCenter;
 }
 
 .toast--success {
-  background: rgb(42, 57, 145);
+  background: $color-aqua;
 }
 
 .toast--danger {
-  background: red;
+  background: $color-danger;
 }
