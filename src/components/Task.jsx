@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function Task({ task }) {
   const { id, taskDetails, createdAt, completedAt, editing } = task;
 
-  const classes = classNames({
+  const taskDetailsClasses = classNames({
     task__details: true,
     'task__details--completed': completedAt,
     'text-strike': completedAt
@@ -18,7 +18,7 @@ function Task({ task }) {
         <EditTask task={task} />
       ) : (
         <div className="task">
-          <div className={classes}>{taskDetails}</div>
+          <div className={taskDetailsClasses}>{taskDetails}</div>
           <p className="task__created">Created At: {createdAt}</p>
           <TaskFooter completedAt={completedAt} isEditing={editing} taskId={id} />
         </div>
