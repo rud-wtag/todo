@@ -27,7 +27,7 @@ function AddTask() {
     setTaskDetails('');
   }
 
-  function onTyping(event) {
+  function onInputChange(event) {
     setTaskDetails(event.target.value);
   }
 
@@ -52,7 +52,7 @@ function AddTask() {
         <textarea
           className="task__input"
           ref={textAreaRef}
-          onChange={onTyping}
+          onChange={onInputChange}
           onKeyDown={onKeyDown}
           required
           value={taskDetails}
