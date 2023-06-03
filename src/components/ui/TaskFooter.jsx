@@ -39,5 +39,5 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
 
 TaskFooter.propTypes = {
   isCompleted: propTypes.bool,
-  taskId: propTypes.number
+  taskId: propTypes.number.isRequired
 };
