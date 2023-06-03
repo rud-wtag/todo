@@ -7,13 +7,13 @@ import { setIsAddingTask } from 'redux/actions/TodoAction';
 function BottomNav() {
   const dispatch = useDispatch();
 
-  function onAdding(e) {
-    e.preventDefault();
+  function onAdding(event) {
+    event.preventDefault();
     dispatch(setIsAddingTask(true));
   }
 
   return (
-    <div>
+    <>
       <h1>Add Task</h1>
       <div className="bottom_nav">
         <div className="bottom_nav__left">
@@ -25,7 +25,7 @@ function BottomNav() {
           <FilterButtons />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
