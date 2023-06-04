@@ -17,7 +17,7 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
 
   return (
     <div className="task__footer">
-      <div className="task__footer__left">
+      <div className="task__footer-left">
         {!isCompleted && (
           <>
             <Button>
@@ -32,7 +32,7 @@ export default function TaskFooter({ isCompleted = false, taskId }) {
           <DeleteIcon />
         </Button>
       </div>
-      {isCompleted && <div className="task__footer__right">completed in</div>}
+      {isCompleted && <div className="task__footer-right">completed in</div>}
     </div>
   );
 }
