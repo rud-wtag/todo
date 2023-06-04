@@ -11,6 +11,7 @@ export default function TaskContainer() {
   const tasks = useSelector((state) => state.todoStates.todos);
   const [todos, setTodos] = useState(tasks);
   const filter = useSelector((state) => state.filterStates);
+  const search = useSelector((state) => state.searchStates);
   const isAddingTask = useSelector((state) => state.todoStates.isAddingTask);
   const [currentPage, setCurrentPage] = useState(1);
   const isTasksAvailable = !(tasks.length || isAddingTask);
@@ -21,8 +22,8 @@ export default function TaskContainer() {
   }
 
   useEffect(() => {
-    setTodos(searchAndFilter(tasks, filter));
-  }, [tasks, filter, currentPage]);
+    setTodos(searchAndFilter(tasks, filter, search));
+  }, [tasks, filter, search, currentPage]);
 
   return (
     <>

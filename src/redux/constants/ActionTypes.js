@@ -17,3 +17,7 @@ export const filterActionTypes = {
   INCOMPLETE: 'Incomplete',
   COMPLETE: 'Complete'
 };
+
+export const searchActionTypes = {
+  SET_SEARCH: 'SET_SEARCH'
+};
