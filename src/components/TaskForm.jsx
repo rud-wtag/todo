@@ -14,7 +14,7 @@ function TaskForm({ isEditing = false, task, submitTask }) {
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
-  const onSubmit = (event) => {
+  function onSubmit(event) {
     event.preventDefault();
     const validateDetails = validate(taskDetails);
 
@@ -26,30 +26,30 @@ function TaskForm({ isEditing = false, task, submitTask }) {
       dispatch(setIsAddingTask(false));
       setTaskDetails('');
     }
-  };
+  }
 
-  const onKeyDown = (event) => {
+  function onKeyDown(event) {
     if (event.key === KEY_ENTER) {
       onSubmit(event);
     }
-  };
+  }
 
-  const onCancel = (event) => {
+  function onCancel(event) {
     event.preventDefault();
     dispatch(setIsAddingTask(false));
-  };
+  }
 
   function onInputChange(event) {
     event.preventDefault();
     setTaskDetails(event.target.value);
   }
 
-  const onComplete = (event) => {
+  function onComplete(event) {
     event.preventDefault();
     onSubmit(event);
     dispatch(setEditing({ taskId: task.id, editing: false }));
     dispatch(setTOComplete(task.id));
-  };
+  }
 
   useEffect(() => {
     textAreaRef.current.focus();
