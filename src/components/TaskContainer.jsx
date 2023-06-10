@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux';
 export default function TaskContainer() {
   const tasks = useSelector((state) => state.todoStates.todos);
   const isAddingTask = useSelector((state) => state.todoStates.isAddingTask);
-  const isTasksAvailable = !(tasks.length || isAddingTask);
+  const isTasksAvailable = tasks.length || isAddingTask;
 
   return (
     <>
-      {isTasksAvailable && <NoTaskPlaceholder />}
+      {!isTasksAvailable && <NoTaskPlaceholder />}
       <div className="task_container">
         {isAddingTask && <AddTask />}
         {tasks.map((task) => (

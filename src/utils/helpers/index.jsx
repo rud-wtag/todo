@@ -1,8 +1,9 @@
+import dayjs from 'dayjs';
 import * as DOMPurify from 'dompurify';
 import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
 export const getDate = () => {
-  return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
+  return dayjs().format('DD.MM.YYYY');
 };
 
 export const sanitize = (text) => {
@@ -11,13 +12,13 @@ export const sanitize = (text) => {
 
 export const validate = (text) => {
   if (text) {
-    const sanitized = sanitize(text);
+    const sanitizedText = sanitize(text);
 
-    if (sanitized === '') {
+    if (sanitizedText === '') {
       return { status: RESPONSE_ERROR, message: 'Please enter a valid description' };
     }
 
-    return { status: RESPONSE_OK, text: sanitized };
+    return { status: RESPONSE_OK, text: sanitizedText };
   }
 
   return {

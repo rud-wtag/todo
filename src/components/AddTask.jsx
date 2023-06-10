@@ -4,31 +4,31 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
-import { validate } from 'utils/helpers/index';
+import { validate } from 'utils/helpers';
 
 function AddTask() {
   const [error, setError] = useState(null);
-  const [taskDetails, setTaskDetails] = useState('');
+  const [title, setTitle] = useState('');
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
   function onSubmit(event) {
     event.preventDefault();
-    const validateDetails = validate(taskDetails);
+    const validateTitle = validate(title);
 
-    if (validateDetails.status === RESPONSE_ERROR) {
-      setError(validateDetails.message);
+    if (validateTitle.status === RESPONSE_ERROR) {
+      setError(validateTitle.message);
       return;
     }
 
     setError(null);
-    dispatch(addTodo(validateDetails.text));
+    dispatch(addTodo(validateTitle.text));
     dispatch(setIsAddingTask(false));
-    setTaskDetails('');
+    setTitle('');
   }
 
   function onInputChange(event) {
-    setTaskDetails(event.target.value);
+    setTitle(event.target.value);
   }
 
   function onCancel(event) {
@@ -55,7 +55,7 @@ function AddTask() {
           onChange={onInputChange}
           onKeyDown={onKeyDown}
           required
-          value={taskDetails}
+          value={title}
         />
         {error && <span>{error}</span>}
         <div className="task__footer">
