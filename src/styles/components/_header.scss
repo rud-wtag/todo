@@ -1,3 +1,5 @@
+@use 'styles/abstracts/functions' as *;
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -10,8 +12,8 @@
   &__right {
     svg {
       display: block;
-      height: 2.4rem;
-      width: 2.4rem;
+      height: toRem(24);
+      width: toRem(24);
     }
 
     align-items: center;
@@ -20,7 +22,7 @@
 
   &__logo svg {
     display: block;
-    height: 3.4rem;
-    width: 3.4rem;
+    height: toRem(34);
+    width: toRem(34);
   }
 }
