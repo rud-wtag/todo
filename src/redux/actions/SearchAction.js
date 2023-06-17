@@ -6,3 +6,10 @@ export const setSearch = (query) => {
     payload: query
   };
 };
+
+export const setSearching = (isSearching) => {
+  return {
+    type: searchActionTypes.SET_SEARCHING,
+    payload: isSearching
+  };
+};

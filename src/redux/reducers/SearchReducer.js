@@ -1,8 +1,9 @@
 import { searchActionTypes } from '../constants/ActionTypes';
-const { SET_SEARCH } = searchActionTypes;
+const { SET_SEARCH, SET_SEARCHING } = searchActionTypes;
 
 const initialState = {
-  query: null
+  query: null,
+  searching: false
 };
 
 export const searchReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ export const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         query: action.payload
+      };
+    case SET_SEARCHING:
+      return {
+        ...state,
+        searching: action.payload
       };
     default:
       return state;

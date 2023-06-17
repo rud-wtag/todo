@@ -1,10 +1,10 @@
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { ReactComponent as SearchIcon } from 'assets/search.svg';
 import classNames from 'classnames';
+import Button from 'components/ui/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearch } from 'redux/actions/SearchAction';
-import Button from 'components/ui/Button';
+import { setSearch, setSearching } from 'redux/actions/SearchAction';
 
 export default function Heading() {
   const [inputHidden, setInputHidden] = useState(true);
@@ -19,6 +19,7 @@ export default function Heading() {
   function onSearch(event) {
     event.preventDefault();
     setQuery(event.target.value);
+    dispatch(setSearching(true));
   }
 
   function onSearchClick(event) {
@@ -29,6 +30,7 @@ export default function Heading() {
   useEffect(() => {
     const trigger = setTimeout(() => {
       dispatch(setSearch(query));
+      dispatch(setSearching(false));
     }, 1000);
     return () => clearTimeout(trigger);
   }, [query]);
