@@ -11,18 +11,11 @@ export const sanitize = (text) => {
 };
 
 export const validate = (text) => {
-  if (text) {
-    const sanitizedText = sanitize(text);
+  const sanitizedText = sanitize(text);
 
-    if (sanitizedText === '') {
-      return { status: RESPONSE_ERROR, message: 'Please enter a valid description' };
-    }
-
-    return { status: RESPONSE_OK, text: sanitizedText };
+  if (sanitizedText === '' || !sanitizedText) {
+    return { status: RESPONSE_ERROR, message: 'Please enter a valid description' };
   }
 
-  return {
-    status: RESPONSE_ERROR,
-    message: 'can not be empty'
-  };
+  return { status: RESPONSE_OK, text: sanitizedText };
 };
