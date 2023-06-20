@@ -1,8 +1,8 @@
 @use 'styles/abstracts' as *;
 
 .task {
-  border: toRem(1) solid $border-color;
-  padding: toRem(15);
+  border: 1px solid $border-color;
+  padding: 0.9375;
 
   &__input {
     width: 100%;

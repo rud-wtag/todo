@@ -1,8 +1,7 @@
 @use 'styles/abstracts' as *;
 
 .task_container {
-  display: grid;
-  grid-template-columns: repeat(3, toRem(382));
-  grid-gap: toRem(26);
+  // display: grid;
+  // grid-template-columns: repeat(3, toRem(382));
   justify-content: center;
 }
