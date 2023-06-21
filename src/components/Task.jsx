@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Task({ task }) {
   const { title, createdAt } = task;
-  return <TaskCard details={title} createdAt={createdAt} />;
+  return <TaskCard title={title} createdAt={createdAt} />;
 }
 
 Task.propTypes = {
