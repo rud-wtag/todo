@@ -14,9 +14,9 @@ export const addTodo = (title) => {
   };
 };
 
-export const setIsAddingTask = (isAddingTask) => {
+export const setIsNewTaskRequested = (isNewTaskRequested) => {
   return {
     type: actionTypes.SET_ADD_TASK,
-    payload: isAddingTask
+    payload: isNewTaskRequested
   };
 };

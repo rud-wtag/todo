@@ -2,7 +2,7 @@ import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import Button from 'components/ui/Button';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo, setIsAddingTask } from 'redux/actions/TodoAction';
+import { addTodo, setIsNewTaskRequested } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers';
 
@@ -23,7 +23,7 @@ function AddTask() {
 
     setError(null);
     dispatch(addTodo(validateTitle.text));
-    dispatch(setIsAddingTask(false));
+    dispatch(setIsNewTaskRequested(false));
     setTitle('');
   }
 
@@ -33,7 +33,7 @@ function AddTask() {
 
   function onCancel(event) {
     event.preventDefault();
-    dispatch(setIsAddingTask(false));
+    dispatch(setIsNewTaskRequested(false));
   }
 
   function onKeyDown(event) {
