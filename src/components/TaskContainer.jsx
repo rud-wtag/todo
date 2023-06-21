@@ -11,7 +11,7 @@ export default function TaskContainer() {
   return (
     <>
       {!isTasksAvailable && <NoTaskPlaceholder />}
-      <div className="task_container">
+      <div className="task_container grid grid-gap grid-cols-1 grid-cols-md-2 grid-cols-lg-3">
         {isAddingTask && <AddTask />}
         {tasks.map((task) => (
           <Task task={task} key={task.id} />
