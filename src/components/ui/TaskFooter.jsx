@@ -28,7 +28,7 @@ export default function TaskFooter({ completedAt = null, taskId }) {
 
   return (
     <div className="task__footer">
-      <div className="task__footer__left">
+      <div className="task__footer-left">
         {!completedAt && (
           <>
             <Button onClick={onComplete}>
@@ -44,13 +44,13 @@ export default function TaskFooter({ completedAt = null, taskId }) {
         </Button>
       </div>
       {completedAt && (
-        <div className="task__footer__right">completed in: {daysBetweenDate(completedAt)}days</div>
+        <div className="task__footer-right">completed in: {daysBetweenDate(completedAt)}</div>
       )}
     </div>
   );
 }
 
 TaskFooter.propTypes = {
-  completedAt: propTypes.string,
-  taskId: propTypes.number
+  completedAt: propTypes.instanceOf(Date),
+  taskId: propTypes.string.isRequired
 };

@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import * as DOMPurify from 'dompurify';
 import { LABEL_SHOW_LESS, LABEL_SHOW_MORE, RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
@@ -6,8 +7,10 @@ export const getDate = () => {
 };
 
 export const daysBetweenDate = (date) => {
-  const diffTime = Math.abs(new Date() - date);
-  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const currentDate = dayjs();
+  let diffDays = currentDate.diff(date, 'day');
+  diffDays = diffDays < 1 ? '1 day' : `${diffDays} days`;
+  return diffDays;
 };
 
 export const sanitize = (text) => {

@@ -14,8 +14,8 @@ function TaskForm({ isEditing = false, task, submitTask }) {
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit(event) {
+    event.preventDefault();
     const validateDetails = validate(taskDetails);
 
     if (validateDetails.status === RESPONSE_ERROR) {
@@ -28,25 +28,25 @@ function TaskForm({ isEditing = false, task, submitTask }) {
     }
   }
 
-  function onKeyDown(e) {
-    if (e.key === KEY_ENTER) {
-      onSubmit(e);
+  function onKeyDown(event) {
+    if (event.key === KEY_ENTER) {
+      onSubmit(event);
     }
   }
 
-  function onCancel(e) {
-    e.preventDefault();
+  function onCancel(event) {
+    event.preventDefault();
     dispatch(setIsAddingTask(false));
   }
 
-  function onTyping(e) {
-    e.preventDefault();
-    setTaskDetails(e.target.value);
+  function onInputChange(event) {
+    event.preventDefault();
+    setTaskDetails(event.target.value);
   }
 
-  function onComplete(e) {
-    e.preventDefault();
-    onSubmit(e);
+  function onComplete(event) {
+    event.preventDefault();
+    onSubmit(event);
     dispatch(setEditing({ taskId: task.id, editing: false }));
     dispatch(setTOComplete(task.id));
   }
@@ -61,7 +61,7 @@ function TaskForm({ isEditing = false, task, submitTask }) {
         <textarea
           className="task__input"
           ref={textAreaRef}
-          onChange={onTyping}
+          onChange={onInputChange}
           onKeyDown={onKeyDown}
           required
           value={taskDetails}
