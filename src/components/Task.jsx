@@ -33,8 +33,8 @@ Task.propTypes = {
   task: PropTypes.shape({
     taskDetails: PropTypes.string,
     createdAt: PropTypes.string,
-    completedAt: PropTypes.string,
-    id: PropTypes.number.isRequired,
+    completedAt: PropTypes.instanceOf(Date),
+    id: PropTypes.string.isRequired,
     editing: PropTypes.boolean
   })
 };
