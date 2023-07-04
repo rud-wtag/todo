@@ -1,20 +1,20 @@
-import dayjs from 'dayjs';
-import * as DOMPurify from 'dompurify';
 import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
 export const getDate = () => {
   return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
 };
 
-export const daysBetweenDate = (date) => {
-  const currentDate = dayjs();
-  let diffDays = currentDate.diff(date, 'day');
-  diffDays = diffDays < 1 ? '1 day' : `${diffDays} days`;
-  return diffDays;
+export const daysBetweenDate = (completedAt, createdAt) => {
+  const SECOND = 1000;
+  const MINUTE = SECOND * 60;
+  const HOUR = MINUTE * 60;
+  const DAY = HOUR * 24;
+  const diffDays = Math.ceil((completedAt - createdAt) / DAY);
+  return diffDays == 1 ? '1 day' : `${diffDays} days`;
 };
 
 export const sanitize = (text) => {
-  return DOMPurify.sanitize(text);
+  return text.trim().replaceAll(/<\/?[^>]+(>|$)/gi, '');
 };
 
 export const validate = (text) => {
