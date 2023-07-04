@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import * as DOMPurify from 'dompurify';
 import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
 export const getDate = () => {
@@ -7,7 +6,7 @@ export const getDate = () => {
 };
 
 export const sanitize = (text) => {
-  return DOMPurify.sanitize(text);
+  return text.trim().replaceAll(/<\/?[^>]+(>|$)/gi, '');
 };
 
 export const validate = (text) => {
