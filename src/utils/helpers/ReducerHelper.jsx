@@ -1,3 +1,5 @@
+import { TASKS_PER_PAGE } from 'utils/constants';
+
 export const deleteTask = (todos, payload) => {
   return todos.filter((todo) => todo.id !== payload);
 };
@@ -42,16 +44,14 @@ export const setEditMode = (todos, task) => {
 };
 
 export const nextPage = (todos, currentPage) => {
-  const tasksPerPage = 9;
-  const indexOfLastTask = currentPage * tasksPerPage;
+  const indexOfLastTask = currentPage * TASKS_PER_PAGE;
 
   if (todos.length > indexOfLastTask) return currentPage + 1;
   return 1;
 };
 
 export const paginate = (tasks, currentPage) => {
-  const tasksPerPage = 9;
-  const indexOfLastTask = currentPage * tasksPerPage;
+  const indexOfLastTask = currentPage * TASKS_PER_PAGE;
 
   return tasks.slice(0, indexOfLastTask);
 };
