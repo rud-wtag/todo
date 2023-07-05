@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTodo, setEditing, setTOComplete } from 'redux/actions/TodoAction';
 import { daysBetweenDate } from 'utils/helpers';
 
-export default function TaskFooter({ completedAt = null, taskId }) {
+export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
   const dispatch = useDispatch();
 
   function onDelete(event) {
@@ -44,13 +44,16 @@ export default function TaskFooter({ completedAt = null, taskId }) {
         </Button>
       </div>
       {completedAt && (
-        <div className="task__footer-right">completed in: {daysBetweenDate(completedAt)}days</div>
+        <div className="task__footer-right">
+          completed in: {daysBetweenDate(completedAt, createdAt)}
+        </div>
       )}
     </div>
   );
 }
 
 TaskFooter.propTypes = {
-  completedAt: propTypes.string,
-  taskId: propTypes.number.isRequired
+  completedAt: propTypes.instanceOf(Date),
+  taskId: propTypes.string.isRequired,
+  createdAt: propTypes.instanceOf(Date).isRequired
 };
