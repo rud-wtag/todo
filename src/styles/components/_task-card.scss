@@ -1,0 +1,10 @@
+@use 'styles/abstracts' as *;
+
+.task {
+  border: 1px solid $border-color;
+  padding: 0.9375rem;
+
+  &__input {
+    width: 100%;
+  }
+}

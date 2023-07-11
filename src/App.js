@@ -1,7 +1,15 @@
+import Home from 'pages/Home';
+import { Provider } from 'react-redux';
+import store from 'redux/store';
+import 'styles/style.scss';
+
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Home />
+      </div>
+    </Provider>
   );
 }
 

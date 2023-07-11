@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  &__left {
+    align-items: center;
+    display: flex;
+  }
+
+  &__right {
+    svg {
+      display: block;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    align-items: center;
+    display: flex;
+  }
+
+  &__logo svg {
+    display: block;
+    height: 2.125rem;
+    width: 2.125rem;
+  }
+}
