@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
 import PropTypes from 'prop-types';
-import { getDate } from 'utils/helpers';
+import { getFormattedDate } from 'utils/helpers';
 
 function Task({ task }) {
   const { id, taskDetails, createdAt, completedAt } = task;
@@ -15,7 +15,7 @@ function Task({ task }) {
   return (
     <div className="task">
       <div className={taskDetailsClasses}>{taskDetails}</div>
-      <p className="task__created">Created At: {getDate(createdAt)}</p>
+      <p className="task__created">Created At: {getFormattedDate(createdAt)}</p>
       <TaskFooter completedAt={completedAt} createdAt={createdAt} taskId={id} />
     </div>
   );
