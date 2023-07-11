@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
 import PropTypes from 'prop-types';
+import { getFormattedDate } from 'utils/helpers';
 
-function TaskCard({ title = '', createdAt = '', isCompleted = false }) {
+function TaskCard({ title = '', createdAt, isCompleted = false }) {
   return (
     <div className="task">
       <div
@@ -12,7 +13,7 @@ function TaskCard({ title = '', createdAt = '', isCompleted = false }) {
       >
         {title}
       </div>
-      <p className="task__created">Created At: {createdAt}</p>
+      <p className="task__created">Created At: {getFormattedDate(createdAt)}</p>
       <TaskFooter isCompleted={isCompleted} />
     </div>
   );
@@ -22,6 +23,6 @@ export default TaskCard;
 
 TaskCard.propTypes = {
   title: PropTypes.string,
-  createdAt: PropTypes.string,
+  createdAt: PropTypes.instanceOf(Date).isRequired,
   isCompleted: PropTypes.bool
 };

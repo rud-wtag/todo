@@ -1,8 +1,7 @@
-import dayjs from 'dayjs';
 import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
-export const getDate = () => {
-  return dayjs().format('DD.MM.YYYY');
+export const getFormattedDate = (date) => {
+  return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
 };
 
 export const sanitize = (text) => {

@@ -8,14 +8,7 @@ export default function Task({ task }) {
 
 Task.propTypes = {
   task: PropTypes.shape({
-    title: PropTypes.string,
-    createdAt: PropTypes.string
+    title: PropTypes.string.isRequired,
+    createdAt: PropTypes.instanceOf(Date).isRequired
   })
-};
-
-Task.defaultProps = {
-  task: {
-    title: '',
-    createdAt: ''
-  }
 };
