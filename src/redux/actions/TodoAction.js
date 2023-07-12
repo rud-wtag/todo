@@ -27,7 +27,7 @@ export const setIsAddingTask = (isAddingTask) => {
   };
 };
 
-export const setTOComplete = (taskId) => {
+export const setTodoComplete = (taskId) => {
   return {
     type: actionTypes.COMPLETE_TASK,
     payload: { taskId: taskId, completedAt: new Date() }
