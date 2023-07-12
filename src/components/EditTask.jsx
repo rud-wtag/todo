@@ -12,7 +12,7 @@ function EditTask({ task }) {
 
   return (
     <div>
-      <TaskForm isEditing={true} task={task} submitTask={onSubmit} />
+      <TaskForm isEditMode={true} task={task} submitTask={onSubmit} />
     </div>
   );
 }
@@ -21,11 +21,11 @@ export default EditTask;
 
 EditTask.propTypes = {
   task: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     taskDetails: PropTypes.string,
-    isEditMode: PropTypes.boolean,
-    createdAt: PropTypes.string,
-    completedAt: PropTypes.string
+    isEditMode: PropTypes.bool,
+    createdAt: PropTypes.instanceOf(Date),
+    completedAt: PropTypes.instanceOf(Date)
   })
 };
 

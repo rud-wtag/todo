@@ -8,7 +8,7 @@ import { setEditMode, setIsAddingTask, setTodoComplete } from 'redux/actions/Tod
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
 
-function TaskForm({ isEditing = false, task, submitTask }) {
+function TaskForm({ isEditMode = false, task, submitTask }) {
   const [error, setError] = useState(null);
   const [taskDetails, setTaskDetails] = useState(task?.taskDetails);
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ function TaskForm({ isEditing = false, task, submitTask }) {
         {error && <span>{error}</span>}
         <div className="task__footer">
           <div className="task__footer__left">
-            {isEditing ? (
+            {isEditMode ? (
               <>
                 <Button>Save</Button>
                 <Button onClick={onComplete}>
@@ -94,12 +94,12 @@ export default TaskForm;
 TaskForm.propTypes = {
   task: PropTypes.shape({
     taskDetails: PropTypes.string,
-    createdAt: PropTypes.string,
-    completedAt: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    isEditMode: PropTypes.boolean
+    createdAt: PropTypes.instanceOf(Date),
+    completedAt: PropTypes.instanceOf(Date),
+    id: PropTypes.string,
+    isEditMode: PropTypes.bool
   }),
-  isEditing: PropTypes.boolean,
+  isEditMode: PropTypes.bool,
   submitTask: PropTypes.func.isRequired
 };
 

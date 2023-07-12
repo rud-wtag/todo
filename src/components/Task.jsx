@@ -23,7 +23,7 @@ function Task({ task }) {
           <p className="task__created">Created At: {getFormattedDate(createdAt)}</p>
           <TaskFooter
             completedAt={completedAt}
-            isEditing={isEditMode}
+            isEditMode={isEditMode}
             createdAt={createdAt}
             taskId={id}
           />
@@ -37,18 +37,16 @@ export default Task;
 
 Task.propTypes = {
   task: PropTypes.shape({
-    taskDetails: PropTypes.string,
-    createdAt: PropTypes.instanceOf(Date).isRequired,
-    completedAt: PropTypes.instanceOf(Date),
     id: PropTypes.string.isRequired,
-    isEditMode: PropTypes.boolean
+    taskDetails: PropTypes.string.isRequired,
+    isEditMode: PropTypes.bool.isRequired,
+    createdAt: PropTypes.instanceOf(Date).isRequired,
+    completedAt: PropTypes.instanceOf(Date)
   })
 };
 
 Task.defaultProps = {
   task: {
-    taskDetails: '',
-    createdAt: null,
     completedAt: null,
     isEditMode: false
   }
