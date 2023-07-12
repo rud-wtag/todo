@@ -7,7 +7,7 @@ import { setIsAddingTask } from 'redux/actions/TodoAction';
 function BottomNav() {
   const dispatch = useDispatch();
 
-  function setIsAdding(event) {
+  function onAdding(event) {
     event.preventDefault();
     dispatch(setIsAddingTask(true));
   }
@@ -17,7 +17,7 @@ function BottomNav() {
       <h1>Add Task</h1>
       <div className="bottom_nav">
         <div className="bottom_nav__left">
-          <Button onClick={setIsAdding} className="bottom_nav__add_btn">
+          <Button onClick={onAdding} className="bottom_nav__add_btn">
             <AddIcon /> create
           </Button>
         </div>

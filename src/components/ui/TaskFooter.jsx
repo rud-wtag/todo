@@ -4,7 +4,7 @@ import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
 import propTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteTodo, setTodoComplete } from 'redux/actions/TodoAction';
+import { deleteTodo, setEditMode, setTodoComplete } from 'redux/actions/TodoAction';
 import { daysBetweenDate } from 'utils/helpers';
 
 export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
@@ -21,6 +21,11 @@ export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
     dispatch(setTodoComplete(taskId));
   }
 
+  function onEdit(event) {
+    event.preventDefault();
+    dispatch(setEditMode({ taskId: taskId, isEditMode: true }));
+  }
+
   return (
     <div className="task__footer">
       <div className="task__footer-left">
@@ -29,7 +34,7 @@ export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
             <Button onClick={onComplete}>
               <DoneIcon />
             </Button>
-            <Button>
+            <Button onClick={onEdit}>
               <EditIcon />
             </Button>
           </>
