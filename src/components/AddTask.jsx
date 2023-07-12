@@ -1,6 +1,7 @@
 import TaskForm from 'components/TaskForm';
 import { useDispatch } from 'react-redux';
 import { addTodo } from 'redux/actions/TodoAction';
+import { INITIAL_TASK } from 'utils/constants';
 
 function AddTask() {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ function AddTask() {
 
   return (
     <>
-      <TaskForm submitTask={onSubmit} />
+      <TaskForm task={INITIAL_TASK} submitTask={onSubmit} />
     </>
   );
 }
