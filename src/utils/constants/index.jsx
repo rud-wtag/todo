@@ -9,6 +9,6 @@ export const LABEL_ALL = 'All';
 
 export const INITIAL_TASK = {
   completedAt: null,
-  editing: false,
+  isEditMode: false,
   createdAt: null
 };

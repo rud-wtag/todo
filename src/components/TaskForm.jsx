@@ -4,7 +4,7 @@ import Button from 'components/ui/Button';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setEditing, setIsAddingTask, setTOComplete } from 'redux/actions/TodoAction';
+import { setEditMode, setIsAddingTask, setTodoComplete } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
 
@@ -47,8 +47,8 @@ function TaskForm({ isEditing = false, task, submitTask }) {
   function onComplete(event) {
     event.preventDefault();
     onSubmit(event);
-    dispatch(setEditing({ taskId: task.id, editing: false }));
-    dispatch(setTOComplete(task.id));
+    dispatch(setEditMode({ taskId: task.id, isEditMode: false }));
+    dispatch(setTodoComplete(task.id));
   }
 
   useEffect(() => {
@@ -97,7 +97,7 @@ TaskForm.propTypes = {
     createdAt: PropTypes.string,
     completedAt: PropTypes.string,
     id: PropTypes.number.isRequired,
-    editing: PropTypes.boolean
+    isEditMode: PropTypes.boolean
   }),
   isEditing: PropTypes.boolean,
   submitTask: PropTypes.func.isRequired
@@ -108,6 +108,6 @@ TaskForm.defaultProps = {
     taskDetails: '',
     createdAt: null,
     completedAt: null,
-    editing: false
+    isEditMode: false
   }
 };
