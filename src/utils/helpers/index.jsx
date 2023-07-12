@@ -6,8 +6,8 @@ import {
   TASKS_PER_PAGE
 } from 'utils/constants';
 
-export const getDate = () => {
-  return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
+export const getFormattedDate = (date) => {
+  return date.toLocaleDateString('en-GB').replace(/\//g, '.');
 };
 
 export const daysBetweenDate = (completedAt, createdAt) => {
