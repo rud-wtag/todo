@@ -37,7 +37,7 @@ export const setEditMode = (todos, task) => {
     if (todo.id === task.taskId) {
       return {
         ...todo,
-        editing: task.editing
+        isEditMode: task.isEditMode
       };
     }
     return todo;

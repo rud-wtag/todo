@@ -35,14 +35,14 @@ export const setIsAddingTask = (isAddingTask) => {
   };
 };
 
-export const setTOComplete = (taskId) => {
+export const setTodoComplete = (taskId) => {
   return {
     type: actionTypes.COMPLETE_TASK,
     payload: { taskId: taskId, completedAt: new Date() }
   };
 };
 
-export const setEditing = (taskId) => {
+export const setEditMode = (taskId) => {
   return {
     type: actionTypes.SET_EDIT,
     payload: taskId

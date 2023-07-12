@@ -13,6 +13,6 @@ export const TASKS_PER_PAGE = 9;
 
 export const INITIAL_TASK = {
   completedAt: null,
-  editing: false,
+  isEditMode: false,
   createdAt: null
 };
