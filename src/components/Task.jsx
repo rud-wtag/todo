@@ -1,20 +1,22 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TaskFooter from 'components/ui/TaskFooter';
+import PropTypes from 'prop-types';
+import { getFormattedDate } from 'utils/helpers';
 
 function Task({ task }) {
-  const { id, taskDetails, createdAt, isCompleted } = task;
+  const { id, taskDetails, createdAt, completedAt } = task;
 
   const taskDetailsClasses = classNames({
     task__details: true,
-    'task__details--completed': isCompleted
+    'task__details--completed': completedAt,
+    'text-strike': completedAt
   });
 
   return (
     <div className="task">
       <div className={taskDetailsClasses}>{taskDetails}</div>
-      <p className="task__created">Created At: {createdAt}</p>
-      <TaskFooter isCompleted={isCompleted} taskId={id} />
+      <p className="task__created">Created At: {getFormattedDate(createdAt)}</p>
+      <TaskFooter completedAt={completedAt} createdAt={createdAt} taskId={id} />
     </div>
   );
 }
@@ -24,16 +26,16 @@ export default Task;
 Task.propTypes = {
   task: PropTypes.shape({
     taskDetails: PropTypes.string,
-    createdAt: PropTypes.string,
-    isCompleted: PropTypes.bool,
-    id: PropTypes.number.isRequired
+    createdAt: PropTypes.instanceOf(Date).isRequired,
+    completedAt: PropTypes.instanceOf(Date),
+    id: PropTypes.string.isRequired
   })
 };
 
 Task.defaultProps = {
   task: {
     taskDetails: '',
-    createdAt: '',
-    isCompleted: false
+    createdAt: null,
+    completedAt: null
   }
 };
