@@ -21,7 +21,7 @@ export const editTask = (todos, task) => {
     if (todo.id === task.taskId) {
       return {
         ...todo,
-        taskDetails: task.taskDetails
+        title: task.title
       };
     }
     return todo;

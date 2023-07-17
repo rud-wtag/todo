@@ -4,27 +4,28 @@ import Button from 'components/ui/Button';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setEditMode, setIsAddingTask, setTodoComplete } from 'redux/actions/TodoAction';
+import { setEditMode, setIsNewTaskRequested, setTodoComplete } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
 
 function TaskForm({ isEditMode = false, task, submitTask }) {
   const [error, setError] = useState(null);
-  const [taskDetails, setTaskDetails] = useState(task?.taskDetails);
+  const [title, setTaskTitle] = useState(task?.title);
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
   function onSubmit(event) {
     event.preventDefault();
-    const validateDetails = validate(taskDetails);
+    const validateDetails = validate(title);
 
     if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
     } else {
       setError(null);
       submitTask(validateDetails.text);
-      dispatch(setIsAddingTask(false));
-      setTaskDetails('');
+      console.log(validateDetails.text, submitTask);
+      dispatch(setIsNewTaskRequested(false));
+      setTaskTitle('');
     }
   }
 
@@ -36,12 +37,12 @@ function TaskForm({ isEditMode = false, task, submitTask }) {
 
   function onCancel(event) {
     event.preventDefault();
-    dispatch(setIsAddingTask(false));
+    dispatch(setIsNewTaskRequested(false));
   }
 
   function onInputChange(event) {
     event.preventDefault();
-    setTaskDetails(event.target.value);
+    setTaskTitle(event.target.value);
   }
 
   function onComplete(event) {
@@ -64,7 +65,7 @@ function TaskForm({ isEditMode = false, task, submitTask }) {
           onChange={onInputChange}
           onKeyDown={onKeyDown}
           required
-          value={taskDetails}
+          value={title}
         />
         {error && <span>{error}</span>}
         <div className="task__footer">
@@ -93,7 +94,7 @@ export default TaskForm;
 
 TaskForm.propTypes = {
   task: PropTypes.shape({
-    taskDetails: PropTypes.string,
+    title: PropTypes.string,
     createdAt: PropTypes.instanceOf(Date),
     completedAt: PropTypes.instanceOf(Date),
     id: PropTypes.string,
@@ -105,7 +106,7 @@ TaskForm.propTypes = {
 
 TaskForm.defaultProps = {
   task: {
-    taskDetails: '',
+    title: '',
     createdAt: null,
     completedAt: null,
     isEditMode: false
