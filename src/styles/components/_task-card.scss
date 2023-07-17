@@ -11,4 +11,10 @@
     display: flex;
     justify-content: space-between;
   }
+  
+  &__title {
+    &--completed {
+      text-decoration: line-through;
+    }
+  }
 }
