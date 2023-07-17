@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import { getFormattedDate } from 'utils/helpers';
 
 function Task({ task }) {
-  const { id, taskDetails, createdAt, completedAt } = task;
-
-  const taskDetailsClasses = classNames({
-    task__details: true,
-    'task__details--completed': completedAt,
-    'text-strike': completedAt
-  });
+  const { id, title, createdAt, completedAt } = task;
 
   return (
     <div className="task">
-      <div className={taskDetailsClasses}>{taskDetails}</div>
+      <div
+        className={classNames('task__title', {
+          'task__title--completed': completedAt
+        })}
+      >
+        {title}
+      </div>
       <p className="task__created">Created At: {getFormattedDate(createdAt)}</p>
       <TaskFooter completedAt={completedAt} createdAt={createdAt} taskId={id} />
     </div>
@@ -25,7 +25,7 @@ export default Task;
 
 Task.propTypes = {
   task: PropTypes.shape({
-    taskDetails: PropTypes.string,
+    title: PropTypes.string,
     createdAt: PropTypes.instanceOf(Date).isRequired,
     completedAt: PropTypes.instanceOf(Date),
     id: PropTypes.string.isRequired
@@ -34,8 +34,7 @@ Task.propTypes = {
 
 Task.defaultProps = {
   task: {
-    taskDetails: '',
-    createdAt: null,
+    title: '',
     completedAt: null
   }
 };
