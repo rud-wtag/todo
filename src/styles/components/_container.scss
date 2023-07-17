@@ -1,3 +1,14 @@
+@use 'styles/abstracts' as *;
+
 .container {
-  width: max-content;
+  width: 100%;
+  padding: 0 9.3125rem;
+
+  @include respond(tab-land) {
+    padding: 0 4.375rem;
+  }
+
+  @include respond(tab-port) {
+    padding: 0 3.125rem;
+  }
 }

@@ -1,27 +1,19 @@
-import * as DOMPurify from 'dompurify';
 import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
 
-export const getDate = () => {
-  return new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
+export const getFormattedDate = (date) => {
+  return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
 };
 
 export const sanitize = (text) => {
-  return DOMPurify.sanitize(text);
+  return text.trim().replaceAll(/<\/?[^>]+(>|$)/gi, '');
 };
 
 export const validate = (text) => {
-  if (text) {
-    const sanitized = sanitize(text);
+  const sanitizedText = sanitize(text);
 
-    if (sanitized === '') {
-      return { status: RESPONSE_ERROR, message: 'Please enter a valid description' };
-    }
-
-    return { status: RESPONSE_OK, text: sanitized };
+  if (sanitizedText === '' || !sanitizedText) {
+    return { status: RESPONSE_ERROR, message: 'Please enter a valid description' };
   }
 
-  return {
-    status: RESPONSE_ERROR,
-    message: 'can not be empty'
-  };
+  return { status: RESPONSE_OK, text: sanitizedText };
 };
