@@ -13,7 +13,7 @@ A todo project with react js and Redux state manangement.
 
 ## features
 
-- [x] create task 
+- [x] create task
 - [ ] Delete task
 - [ ] Pagination
 - [ ] Searching
@@ -22,14 +22,18 @@ A todo project with react js and Redux state manangement.
 - [ ] Testing
 
 ## Installation
+
 ##### Platform requirements
+
 ```
 "engines": {
     "node": ">= 19.8",
     "npm": ">= 9.5.0"
   },
 ```
+
 ## Documentation
+
 ##### Media Query Manager
 
 ```
