@@ -9,10 +9,10 @@ export const LABEL_ALL = 'All';
 export const LABEL_SHOW_MORE = 'Show more';
 export const LABEL_SHOW_LESS = 'Show less';
 
-export const TASK_PER_PAGE = 9;
+export const TASKS_PER_PAGE = 9;
 
 export const INITIAL_TASK = {
   completedAt: null,
-  editing: false,
+  isEditMode: false,
   createdAt: null
 };

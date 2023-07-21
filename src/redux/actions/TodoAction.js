@@ -1,6 +1,5 @@
 import { actionTypes } from 'redux/constants/ActionTypes';
 import { INITIAL_TASK } from 'utils/constants';
-import { getDate } from 'utils/helpers';
 import { v4 as uuidv4 } from 'uuid';
 
 export const addTodo = (taskDetails) => {
@@ -10,7 +9,7 @@ export const addTodo = (taskDetails) => {
       ...INITIAL_TASK,
       id: uuidv4(),
       taskDetails: taskDetails,
-      createdAt: getDate()
+      createdAt: new Date()
     }
   };
 };
@@ -36,14 +35,14 @@ export const setIsAddingTask = (isAddingTask) => {
   };
 };
 
-export const setTOComplete = (taskId) => {
+export const setTodoComplete = (taskId) => {
   return {
     type: actionTypes.COMPLETE_TASK,
     payload: { taskId: taskId, completedAt: new Date() }
   };
 };
 
-export const setEditing = (taskId) => {
+export const setEditMode = (taskId) => {
   return {
     type: actionTypes.SET_EDIT,
     payload: taskId

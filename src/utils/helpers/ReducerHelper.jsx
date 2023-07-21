@@ -1,6 +1,5 @@
 import { filterActionTypes } from 'redux/constants/ActionTypes';
-import { TASK_PER_PAGE } from 'utils/constants';
-
+import { TASKS_PER_PAGE } from 'utils/constants';
 const { ALL, COMPLETE, INCOMPLETE } = filterActionTypes;
 
 export const deleteTask = (todos, payload) => {
@@ -38,7 +37,7 @@ export const setEditMode = (todos, task) => {
     if (todo.id === task.taskId) {
       return {
         ...todo,
-        editing: task.editing
+        isEditMode: task.isEditMode
       };
     }
     return todo;
@@ -47,8 +46,7 @@ export const setEditMode = (todos, task) => {
 };
 
 export const nextPage = (todos, currentPage) => {
-  const tasksPerPage = TASK_PER_PAGE;
-  const indexOfLastTask = currentPage * tasksPerPage;
+  const indexOfLastTask = currentPage * TASKS_PER_PAGE;
 
   if (todos.length > indexOfLastTask) return currentPage + 1;
   return 1;
@@ -72,8 +70,7 @@ const filterTasks = (tasks, filterState = ALL) => {
 };
 
 export const paginate = (tasks, currentPage) => {
-  const tasksPerPage = 9;
-  const indexOfLastTask = currentPage * tasksPerPage;
+  const indexOfLastTask = currentPage * TASKS_PER_PAGE;
 
   return tasks.slice(0, indexOfLastTask);
 };
