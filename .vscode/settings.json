@@ -21,6 +21,9 @@
     "source.organizeImports": true
   },
   "eslint.alwaysShowStatus": true,
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.json"
+  },
   // emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {

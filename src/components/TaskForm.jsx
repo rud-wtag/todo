@@ -4,51 +4,51 @@ import Button from 'components/ui/Button';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setEditing, setIsAddingTask, setTOComplete } from 'redux/actions/TodoAction';
+import { setEditMode, setIsNewTaskRequested, setTodoComplete } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';
 
-function TaskForm({ isEditing = false, task, submitTask }) {
+function TaskForm({ isEditMode = false, task, submitTask }) {
   const [error, setError] = useState(null);
-  const [taskDetails, setTaskDetails] = useState(task?.taskDetails);
+  const [title, setTaskTitle] = useState(task?.title);
   const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
-  function onSubmit(e) {
-    e.preventDefault();
-    const validateDetails = validate(taskDetails);
+  function onSubmit(event) {
+    event.preventDefault();
+    const validateDetails = validate(title);
 
     if (validateDetails.status === RESPONSE_ERROR) {
       setError(validateDetails.message);
     } else {
       setError(null);
       submitTask(validateDetails.text);
-      dispatch(setIsAddingTask(false));
-      setTaskDetails('');
+      dispatch(setIsNewTaskRequested(false));
+      setTaskTitle('');
     }
   }
 
-  function onKeyDown(e) {
-    if (e.key === KEY_ENTER) {
-      onSubmit(e);
+  function onKeyDown(event) {
+    if (event.key === KEY_ENTER) {
+      onSubmit(event);
     }
   }
 
-  function onCancel(e) {
-    e.preventDefault();
-    dispatch(setIsAddingTask(false));
+  function onCancel(event) {
+    event.preventDefault();
+    dispatch(setIsNewTaskRequested(false));
   }
 
-  function onTyping(e) {
-    e.preventDefault();
-    setTaskDetails(e.target.value);
+  function onInputChange(event) {
+    event.preventDefault();
+    setTaskTitle(event.target.value);
   }
 
-  function onComplete(e) {
-    e.preventDefault();
-    onSubmit(e);
-    dispatch(setEditing({ taskId: task.id, editing: false }));
-    dispatch(setTOComplete(task.id));
+  function onComplete(event) {
+    event.preventDefault();
+    onSubmit(event);
+    dispatch(setEditMode({ taskId: task.id, isEditMode: false }));
+    dispatch(setTodoComplete(task.id));
   }
 
   useEffect(() => {
@@ -61,15 +61,15 @@ function TaskForm({ isEditing = false, task, submitTask }) {
         <textarea
           className="task__input"
           ref={textAreaRef}
-          onChange={onTyping}
+          onChange={onInputChange}
           onKeyDown={onKeyDown}
           required
-          value={taskDetails}
+          value={title}
         />
         {error && <span>{error}</span>}
         <div className="task__footer">
           <div className="task__footer__left">
-            {isEditing ? (
+            {isEditMode ? (
               <>
                 <Button>Save</Button>
                 <Button onClick={onComplete}>
@@ -93,21 +93,21 @@ export default TaskForm;
 
 TaskForm.propTypes = {
   task: PropTypes.shape({
-    taskDetails: PropTypes.string,
-    createdAt: PropTypes.string,
-    completedAt: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    editing: PropTypes.boolean
+    title: PropTypes.string,
+    createdAt: PropTypes.instanceOf(Date),
+    completedAt: PropTypes.instanceOf(Date),
+    id: PropTypes.string,
+    isEditMode: PropTypes.bool
   }),
-  isEditing: PropTypes.boolean,
+  isEditMode: PropTypes.bool,
   submitTask: PropTypes.func.isRequired
 };
 
 TaskForm.defaultProps = {
   task: {
-    taskDetails: '',
+    title: '',
     createdAt: null,
     completedAt: null,
-    editing: false
+    isEditMode: false
   }
 };
