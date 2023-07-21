@@ -23,7 +23,6 @@ function TaskForm({ isEditMode = false, task, submitTask }) {
     } else {
       setError(null);
       submitTask(validateDetails.text);
-      console.log(validateDetails.text, submitTask);
       dispatch(setIsNewTaskRequested(false));
       setTaskTitle('');
     }
