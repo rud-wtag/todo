@@ -3,11 +3,11 @@
 .header {
   display: flex;
   justify-content: space-between;
-  height: 7.6rem;
+  height: 4.5rem;
   background: $color-white;
   width: 100%;
-  margin-bottom: 6.5rem;
-  border-bottom: 0.1rem solid $border-color;
+  margin-bottom: 4.0625rem;
+  border-bottom: 0.0625rem solid $border-color;
 
   &__left {
     align-items: center;
@@ -16,17 +16,16 @@
 
   &__brand {
     color: $color-primary;
-    font-size: 3.6rem;
+    font-size: 2.25rem;
     font-weight: 700;
-    line-height: 4.2rem;
-    margin-left: 1.4rem;
+    margin-left: 0.875rem;
   }
 
   &__right {
     svg {
       display: block;
-      height: 2.4rem;
-      width: 2.4rem;
+      height: 1.5rem;
+      width: 1.5rem;
     }
 
     align-items: center;
@@ -34,13 +33,12 @@
   }
 
   &__input {
-    border: 0.1rem solid $border-color;
     border-radius: 5px;
-    width: 51.8rem;
-    height: 3.6rem;
-    margin-right: 1.7rem;
+    width: 32.375rem;
+    height: 2.25rem;
+    margin-right: 1.0625rem;
     transition: width 0.5s ease-in-out;
-    border: 0.3rem solid $color-border-active;
+    border: 0.1875rem solid $color-border-active;
 
     &:focus {
       outline: none;
@@ -54,7 +52,7 @@
 
   &__logo svg {
     display: block;
-    height: 3.4rem;
-    width: 3.4rem;
+    height: 2.125rem;
+    width: 2.125rem;
   }
 }
