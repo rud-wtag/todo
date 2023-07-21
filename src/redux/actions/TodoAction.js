@@ -2,13 +2,13 @@ import { actionTypes } from 'redux/constants/ActionTypes';
 import { INITIAL_TASK } from 'utils/constants';
 import { v4 as uuidv4 } from 'uuid';
 
-export const addTodo = (taskDetails) => {
+export const addTodo = (title) => {
   return {
     type: actionTypes.ADD_TODO,
     payload: {
       ...INITIAL_TASK,
       id: uuidv4(),
-      taskDetails: taskDetails,
+      title,
       createdAt: new Date()
     }
   };
@@ -28,10 +28,10 @@ export const deleteTodo = (todoId) => {
   };
 };
 
-export const setIsAddingTask = (isAddingTask) => {
+export const setIsNewTaskRequested = (isNewTaskRequested) => {
   return {
     type: actionTypes.SET_ADD_TASK,
-    payload: isAddingTask
+    payload: isNewTaskRequested
   };
 };
 

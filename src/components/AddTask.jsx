@@ -6,8 +6,8 @@ import { INITIAL_TASK } from 'utils/constants';
 function AddTask() {
   const dispatch = useDispatch();
 
-  const onSubmit = (taskDetails) => {
-    dispatch(addTodo(taskDetails));
+  const onSubmit = (title) => {
+    dispatch(addTodo(title));
   };
 
   return (

@@ -5,13 +5,7 @@ import PropTypes from 'prop-types';
 import { getFormattedDate } from 'utils/helpers';
 
 function Task({ task }) {
-  const { id, taskDetails, createdAt, completedAt, isEditMode } = task;
-
-  const taskDetailsClasses = classNames({
-    task__details: true,
-    'task__details--completed': completedAt,
-    'text-strike': completedAt
-  });
+  const { id, title, createdAt, completedAt, isEditMode } = task;
 
   return (
     <>
@@ -19,7 +13,13 @@ function Task({ task }) {
         <EditTask task={task} />
       ) : (
         <div className="task">
-          <div className={taskDetailsClasses}>{taskDetails}</div>
+          <div
+            className={classNames('task__title', {
+              'task__title--completed': completedAt
+            })}
+          >
+            {title}
+          </div>
           <p className="task__created">Created At: {getFormattedDate(createdAt)}</p>
           <TaskFooter
             completedAt={completedAt}
@@ -38,7 +38,7 @@ export default Task;
 Task.propTypes = {
   task: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    taskDetails: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     isEditMode: PropTypes.bool.isRequired,
     createdAt: PropTypes.instanceOf(Date).isRequired,
     completedAt: PropTypes.instanceOf(Date)

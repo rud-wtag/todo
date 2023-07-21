@@ -6,8 +6,8 @@ import { editTodo, setEditMode } from 'redux/actions/TodoAction';
 function EditTask({ task }) {
   const dispatch = useDispatch();
 
-  function onSubmit(taskDetails) {
-    dispatch(editTodo({ taskId: task.id, taskDetails: taskDetails }));
+  function onSubmit(title) {
+    dispatch(editTodo({ taskId: task.id, title }));
     dispatch(setEditMode({ taskId: task.id, isEditMode: false }));
   }
 
@@ -23,7 +23,7 @@ export default EditTask;
 EditTask.propTypes = {
   task: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    taskDetails: PropTypes.string,
+    title: PropTypes.string,
     isEditMode: PropTypes.bool,
     createdAt: PropTypes.instanceOf(Date),
     completedAt: PropTypes.instanceOf(Date)
@@ -33,7 +33,7 @@ EditTask.propTypes = {
 EditTask.defaultProps = {
   task: {
     id: null,
-    taskDetails: '',
+    title: '',
     isEditMode: false,
     createdAt: null,
     completedAt: null

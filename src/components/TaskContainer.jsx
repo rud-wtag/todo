@@ -12,9 +12,9 @@ export default function TaskContainer() {
   const [todos, setTodos] = useState(tasks);
   const filter = useSelector((state) => state.filterStates);
   const search = useSelector((state) => state.searchStates);
-  const isAddingTask = useSelector((state) => state.todoStates.isAddingTask);
+  const isNewTaskRequested = useSelector((state) => state.todoStates.isNewTaskRequested);
   const [currentPage, setCurrentPage] = useState(1);
-  const isTasksAvailable = !(tasks.length || isAddingTask);
+  const isTasksAvailable = tasks.length || isNewTaskRequested;
   const isPaginationAvailable = todos.length > 9;
 
   function loadMore() {
@@ -27,9 +27,9 @@ export default function TaskContainer() {
 
   return (
     <>
-      {isTasksAvailable && <NoTaskPlaceholder />}
-      <div className="task_container">
-        {isAddingTask && <AddTask />}
+      {!isTasksAvailable && <NoTaskPlaceholder />}
+      <div className="task_container grid grid-gap grid-cols-1 grid-cols-md-2 grid-cols-lg-3">
+        {isNewTaskRequested && <AddTask />}
         {paginate(todos, currentPage).map((task) => (
           <Task task={task} key={task.id} />
         ))}

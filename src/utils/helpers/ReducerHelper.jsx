@@ -24,7 +24,7 @@ export const editTask = (todos, task) => {
     if (todo.id === task.taskId) {
       return {
         ...todo,
-        taskDetails: task.taskDetails
+        title: task.title
       };
     }
     return todo;
@@ -70,7 +70,7 @@ const filterTasks = (tasks, filterState = ALL) => {
 };
 
 const searchTasks = (tasks, query) => {
-  return tasks.filter((task) => task.taskDetails.includes(query));
+  return tasks.filter((task) => task.title.includes(query));
 };
 
 export const paginate = (tasks, currentPage) => {
