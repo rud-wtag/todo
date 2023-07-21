@@ -6,7 +6,7 @@ import { LABEL_ALL, LABEL_COMPLETE, LABEL_INCOMPLETE } from 'utils/constants';
 function FilterButtons() {
   const dispatch = useDispatch();
 
-  const filterButtons = [
+  const actionButtons = [
     { label: LABEL_ALL },
     { label: LABEL_COMPLETE },
     { label: LABEL_INCOMPLETE }
@@ -19,7 +19,7 @@ function FilterButtons() {
 
   return (
     <>
-      {filterButtons.map((button) => {
+      {actionButtons.map((button) => {
         return (
           <Button
             onClick={(event) => onFilter(event, button.label)}
