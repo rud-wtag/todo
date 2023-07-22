@@ -3,15 +3,18 @@
 .task {
   border: 1px solid $border-color;
   padding: 0.9375rem;
+  border: 1px solid $border-color;
+  padding: 0.9375rem;
 
   &__input {
     width: 100%;
   }
+
   &__footer {
     display: flex;
     justify-content: space-between;
   }
-  
+
   &__title {
     &--completed {
       text-decoration: line-through;
