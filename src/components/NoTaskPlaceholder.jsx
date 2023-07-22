@@ -1,5 +1,5 @@
-import { ReactComponent as AddTaskSVG } from 'assets/create.svg';
 import { useDispatch } from 'react-redux';
+import { ReactComponent as AddTaskSVG } from 'assets/create.svg';
 import { setIsNewTaskRequested } from 'redux/actions/TodoAction';
 
 function NoTaskPlaceholder() {

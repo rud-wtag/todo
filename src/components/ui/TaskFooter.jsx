@@ -1,9 +1,9 @@
+import propTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
-import propTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import { deleteTodo, setEditMode, setTodoComplete, toast } from 'redux/actions/TodoAction';
 import { daysBetweenDate } from 'utils/helpers';
 

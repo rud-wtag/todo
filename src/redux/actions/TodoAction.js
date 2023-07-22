@@ -1,6 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
 import { actionTypes } from 'redux/constants/ActionTypes';
 import { INITIAL_TASK } from 'utils/constants';
-import { v4 as uuidv4 } from 'uuid';
 
 export const addTodo = (title) => {
   return {
