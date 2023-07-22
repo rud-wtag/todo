@@ -1,5 +1,5 @@
-import { actionTypes } from 'redux/constants/ActionTypes';
 import { v4 as uuidv4 } from 'uuid';
+import { actionTypes } from 'redux/constants/ActionTypes';
 
 export const addTodo = (title) => {
   return {

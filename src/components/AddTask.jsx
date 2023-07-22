@@ -1,7 +1,7 @@
-import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
-import Button from 'components/ui/Button';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
+import Button from 'components/ui/Button';
 import { addTodo, setIsNewTaskRequested } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers';

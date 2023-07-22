@@ -1,7 +1,7 @@
+import { useDispatch } from 'react-redux';
 import { ReactComponent as AddIcon } from 'assets/add.svg';
 import FilterButtons from 'components/FilterButtons';
 import Button from 'components/ui/Button';
-import { useDispatch } from 'react-redux';
 import { setIsNewTaskRequested } from 'redux/actions/TodoAction';
 
 function BottomNav() {
