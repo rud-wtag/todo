@@ -1,13 +1,13 @@
 @use 'styles/abstracts' as *;
 
 .container {
-  padding: 0 14.9rem;
-  
-  @include respond(tab-land){
-    padding: 0 7rem;
+  padding: 0 9.3125rem;
+
+  @include respond(tab-land) {
+    padding: 0 4.375rem;
   }
 
-  @include respond(tab-port){
-    padding: 0 5rem;
+  @include respond(tab-port) {
+    padding: 0 3.125rem;
   }
 }

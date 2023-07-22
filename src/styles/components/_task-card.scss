@@ -1,14 +1,15 @@
-@use 'styles/abstracts/variables' as *;
+@use 'styles/abstracts' as *;
 
 .task {
-  border: 0.1rem solid $border-color;
-  padding: 1.5rem;
+  border: 1px solid $border-color;
+  padding: 0.9375rem;
   background: $color-white;
 
-  &__details {
+  &__title {
     font-weight: 700;
     font-size: 24px;
     word-wrap: break-word;
+
     &--completed {
       color: $color-aqua;
       text-decoration: line-through;
@@ -16,28 +17,28 @@
   }
 
   &__created {
-    margin-top: 0.9rem;
+    margin-top: 0.5625rem;
     color: $color-gray;
   }
 
   &__input {
     width: 100%;
     border: 0.3rem solid $color-border-active;
-    min-height: 8rem;
-    font-size: $default-font;
+    min-height: 5rem;
     &:focus {
       outline: none;
     }
   }
 
   &__footer {
-    margin-top: 2.4rem;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: space-between;
 
-    &__left {
+    &-left {
+      @include flexCenter;
       button {
-        margin-left: 2.6rem;
+        margin-left: 1.625rem;
         &:first-child {
           margin: 0;
         }

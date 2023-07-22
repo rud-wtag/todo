@@ -1,21 +1,9 @@
 @use 'styles/abstracts' as *;
 
 .task_container {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-
-  @include respond(tab-port){
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  @include respond(phone){
-    grid-template-columns: 1fr;
-  }
-
-  grid-gap: 3.4rem;
-  justify-content: center;
-  &__more_btn{
+  &__more_btn {
     display: flex;
     margin-inline: auto;
-    margin-top: 5.7rem;
+    margin-top: 3.5625rem;
   }
 }

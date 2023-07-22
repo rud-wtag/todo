@@ -2,19 +2,19 @@ import { ReactComponent as AddIcon } from 'assets/add.svg';
 import FilterButtons from 'components/FilterButtons';
 import Button from 'components/ui/Button';
 import { useDispatch } from 'react-redux';
-import { setIsAddingTask } from 'redux/actions/TodoAction';
+import { setIsNewTaskRequested } from 'redux/actions/TodoAction';
 
 function BottomNav() {
   const dispatch = useDispatch();
 
   function onAdding(event) {
     event.preventDefault();
-    dispatch(setIsAddingTask(true));
+    dispatch(setIsNewTaskRequested(true));
   }
 
   return (
     <div className="bottom_nav__wrapper container">
-      <h1>Add Task</h1>
+      <h1>Add Tasks</h1>
       <div className="bottom_nav">
         <div className="bottom_nav__left">
           <Button variant="secondary" onClick={onAdding} className="bottom_nav__add_btn">
