@@ -4,7 +4,7 @@ import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
 import propTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteTodo, setEditMode, setTodoComplete, toast } from 'redux/actions/TodoAction';
+import { deleteTodo, setEditMode, setTodoComplete } from 'redux/actions/TodoAction';
 import { daysBetweenDate } from 'utils/helpers';
 
 export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
@@ -19,7 +19,6 @@ export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
   function onComplete(event) {
     event.preventDefault();
     dispatch(setTodoComplete(taskId));
-    dispatch(toast({ type: 'success', message: 'Task completed successfully' }));
   }
 
   function onEdit(event) {

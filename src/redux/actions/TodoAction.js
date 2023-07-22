@@ -40,6 +40,7 @@ export const editTodo = (task) => {
         type: actionTypes.EDIT_TODO,
         payload: task
       });
+      dispatch(toast({ type: 'success', message: 'Task updated successfully' }));
     } else {
       dispatch(toast({ type: 'danger', message: 'Failed to add task' }));
     }
