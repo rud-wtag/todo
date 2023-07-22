@@ -1,7 +1,7 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import EditTask from 'components/EditTask';
 import TaskFooter from 'components/ui/TaskFooter';
-import PropTypes from 'prop-types';
 import { getFormattedDate } from 'utils/helpers';
 
 function Task({ task }) {
