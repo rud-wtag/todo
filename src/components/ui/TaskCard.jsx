@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import TaskFooter from 'components/ui/TaskFooter';
 import PropTypes from 'prop-types';
+import TaskFooter from 'components/ui/TaskFooter';
 import { getFormattedDate } from 'utils/helpers';
 
 function TaskCard({ title = '', createdAt, isCompleted = false }) {

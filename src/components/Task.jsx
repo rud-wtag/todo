@@ -1,5 +1,5 @@
-import TaskCard from 'components/ui/TaskCard';
 import PropTypes from 'prop-types';
+import TaskCard from 'components/ui/TaskCard';
 
 export default function Task({ task }) {
   const { title, createdAt } = task;

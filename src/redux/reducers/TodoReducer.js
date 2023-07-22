@@ -13,11 +13,13 @@ export const todoReducer = (state = initialState, action) => {
         ...state,
         todos: [{ ...action.payload }, ...state.todos]
       };
+
     case SET_ADD_TASK:
       return {
         ...state,
         isNewTaskRequested: action.payload
       };
+
     default:
       return state;
   }

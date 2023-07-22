@@ -1,8 +1,8 @@
+import propTypes from 'prop-types';
 import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
 import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 import Button from 'components/ui/Button';
-import propTypes from 'prop-types';
 
 export default function TaskFooter({ isCompleted = false }) {
   return (
