@@ -1,9 +1,9 @@
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import AddTask from 'components/AddTask';
 import NoTaskPlaceholder from 'components/NoTaskPlaceholder';
 import Task from 'components/Task';
 import Button from 'components/ui/Button';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { paginationLabel } from 'utils/helpers';
 import { nextPage, paginate } from 'utils/helpers/ReducerHelper';
 
