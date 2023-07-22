@@ -14,7 +14,7 @@ export const daysBetweenDate = (completedAt, createdAt) => {
 };
 
 export const sanitize = (text) => {
-  return text.trim().replaceAll(/<\/?[^>]+(>|$)/gi, '');
+  return text.replaceAll(/<\/?[^>]+(>|$)/gi, '').trim();
 };
 
 export const validate = (text) => {

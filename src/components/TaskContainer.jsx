@@ -1,7 +1,7 @@
+import { useSelector } from 'react-redux';
 import AddTask from 'components/AddTask';
 import NoTaskPlaceholder from 'components/NoTaskPlaceholder';
 import Task from 'components/Task';
-import { useSelector } from 'react-redux';
 
 export default function TaskContainer() {
   const tasks = useSelector((state) => state.todoStates.todos);

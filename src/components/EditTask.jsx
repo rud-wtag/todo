@@ -1,6 +1,6 @@
-import TaskForm from 'components/TaskForm';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import TaskForm from 'components/TaskForm';
 import { editTodo, setEditMode } from 'redux/actions/TodoAction';
 function EditTask({ task }) {
   const dispatch = useDispatch();

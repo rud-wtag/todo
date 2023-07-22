@@ -1,6 +1,5 @@
 export const deleteTask = (todos, payload) => {
-  const newList = todos.filter((todo) => todo.id !== payload);
-  return newList;
+  return todos.filter((todo) => todo.id !== payload);
 };
 
 export const completeTask = (todos, payload) => {

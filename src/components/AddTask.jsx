@@ -1,5 +1,5 @@
-import TaskForm from 'components/TaskForm';
 import { useDispatch } from 'react-redux';
+import TaskForm from 'components/TaskForm';
 import { addTodo } from 'redux/actions/TodoAction';
 import { INITIAL_TASK } from 'utils/constants';
 
