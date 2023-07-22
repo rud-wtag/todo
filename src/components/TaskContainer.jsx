@@ -32,7 +32,14 @@ export default function TaskContainer() {
         <div className="task_container grid grid-gap grid-cols-1 grid-cols-md-2 grid-cols-lg-3">
           {isNewTaskRequested && <AddTask />}
           {paginate(todos, currentPage).map((task) => (
-            <Task task={task} key={task.id} />
+            <Task
+              task={{
+                ...task,
+                createdAt: task.createdAt ? new Date(task.createdAt) : task.createdAt,
+                completedAt: task.completedAt ? new Date(task.completedAt) : task.completedAt
+              }}
+              key={task.id}
+            />
           ))}
         </div>
         {isPaginationAvailable && (

@@ -14,7 +14,6 @@ export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
     event.preventDefault();
     alert('Task will removed!');
     dispatch(deleteTodo(taskId));
-    dispatch(toast({ type: 'danger', message: 'Task deleted' }));
   }
 
   function onComplete(event) {

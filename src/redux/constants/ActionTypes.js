@@ -6,7 +6,8 @@ export const actionTypes = {
   COMPLETE_TASK: 'COMPLETE_TASK',
   SET_EDIT: 'SET_EDIT',
   NEXT_PAGE: 'NEXT_PAGE',
-  TOAST_MESSAGE: 'TOAST_MESSAGE'
+  TOAST_MESSAGE: 'TOAST_MESSAGE',
+  LOAD_TASKS_FROM_DB: 'LOAD_TASKS_FROM_DB'
 };
 
 export const paginationActionTypes = {

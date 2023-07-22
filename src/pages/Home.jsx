@@ -3,18 +3,47 @@ import Heading from 'components/Heading';
 import TaskContainer from 'components/TaskContainer';
 import Loader from 'components/ui/Loader';
 import Toast from 'components/ui/Toast';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadTasksFromDB, toast } from 'redux/actions/TodoAction';
+import supabase from 'supabase';
 
 function Home() {
   const isSearching = useSelector((state) => state.searchStates.searching);
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchTasks() {
+      let { data, error } = await supabase
+        .from('todos')
+        .select()
+        .order('createdAt', { ascending: false });
+
+      if (!error) {
+        dispatch(loadTasksFromDB(data));
+        setIsLoading(false);
+      } else {
+        dispatch(toast({ type: 'danger', message: 'something wrong. Try again later' }));
+      }
+    }
+
+    fetchTasks();
+  }, []);
 
   return (
     <div className="home">
-      <Heading />
-      {isSearching && <Loader />}
-      <Toast />
-      <BottomNav />
-      <TaskContainer />
+      {isLoading ? (
+        <div>loading....</div>
+      ) : (
+        <>
+          <Heading />
+          {isSearching && <Loader />}
+          <Toast />
+          <BottomNav />
+          <TaskContainer />
+        </>
+      )}
     </div>
   );
 }
