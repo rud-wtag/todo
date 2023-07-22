@@ -3,10 +3,10 @@
 .bottom_nav {
   &__wrapper {
     h1 {
-      font-size: 3rem;
+      font-size: 1.875rem;
     }
   }
-  
+
   display: flex;
 
   @include respond(phone) {
@@ -14,17 +14,18 @@
   }
 
   justify-content: space-between;
-  margin: 2.8rem 0 3.4rem 0;
+  margin: 1.75rem 0 2.125rem 0;
+
   &__right {
     font-size: inherit;
 
     &__btn:nth-child(2) {
-      margin-inline: 2rem;
+      margin-inline: 1.25rem;
     }
 
     @include respond(phone) {
       margin-left: auto;
-      margin-top: 1.5rem;
+      margin-top: 0.9375rem;
     }
   }
 }
