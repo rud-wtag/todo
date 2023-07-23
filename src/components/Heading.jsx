@@ -1,8 +1,8 @@
-import { ReactComponent as Logo } from 'assets/logo.svg';
-import { ReactComponent as SearchIcon } from 'assets/search.svg';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ReactComponent as SearchIcon } from 'assets/search.svg';
+import { ReactComponent as Logo } from 'assets/logo.svg';
 import { setSearch } from 'redux/actions/SearchAction';
 import Button from 'components/ui/Button';
 
