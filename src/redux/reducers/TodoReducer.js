@@ -3,6 +3,7 @@ import { completeTask, deleteTask, editTask, setEditMode } from 'utils/helpers/R
 
 const { ADD_TODO, SET_ADD_TASK, DELETE_TODO, COMPLETE_TASK, SET_EDIT, EDIT_TODO, TOAST_MESSAGE } =
   actionTypes;
+
 const initialState = {
   isNewTaskRequested: false,
   todos: [],
