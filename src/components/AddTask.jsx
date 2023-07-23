@@ -10,11 +10,7 @@ function AddTask() {
     dispatch(addTodo(title));
   };
 
-  return (
-    <>
-      <TaskForm task={INITIAL_TASK} submitTask={onSubmit} />
-    </>
-  );
+  return <TaskForm task={INITIAL_TASK} submitTask={onSubmit} />;
 }
 
 export default AddTask;
