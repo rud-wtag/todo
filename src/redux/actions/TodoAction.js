@@ -26,3 +26,10 @@ export const setIsNewTaskRequested = (isNewTaskRequested) => {
     payload: isNewTaskRequested
   };
 };
+
+export const setTodoComplete = (taskId) => {
+  return {
+    type: actionTypes.COMPLETE_TASK,
+    payload: { taskId: taskId, completedAt: new Date() }
+  };
+};

@@ -4,6 +4,15 @@ export const getFormattedDate = (date) => {
   return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
 };
 
+export const daysBetweenDate = (completedAt, createdAt) => {
+  const SECOND = 1000;
+  const MINUTE = SECOND * 60;
+  const HOUR = MINUTE * 60;
+  const DAY = HOUR * 24;
+  const diffDays = Math.ceil((completedAt - createdAt) / DAY);
+  return diffDays == 1 ? '1 day' : `${diffDays} days`;
+};
+
 export const sanitize = (text) => {
   return text.replaceAll(/<\/?[^>]+(>|$)/gi, '').trim();
 };

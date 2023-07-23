@@ -7,4 +7,15 @@
   &__input {
     width: 100%;
   }
+  
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    &--completed {
+      text-decoration: line-through;
+    }
+  }
 }
