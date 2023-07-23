@@ -1,4 +1,10 @@
-import { RESPONSE_ERROR, RESPONSE_OK } from 'utils/constants';
+import {
+  LABEL_SHOW_LESS,
+  LABEL_SHOW_MORE,
+  RESPONSE_ERROR,
+  RESPONSE_OK,
+  TASKS_PER_PAGE
+} from 'utils/constants';
 
 export const getFormattedDate = (date) => {
   return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
@@ -25,4 +31,10 @@ export const validate = (text) => {
   }
 
   return { status: RESPONSE_OK, text: sanitizedText };
+};
+
+export const paginationLabel = (tasks, currentPage) => {
+  const indexOfLastTask = currentPage * TASKS_PER_PAGE;
+  if (tasks.length < indexOfLastTask) return LABEL_SHOW_LESS;
+  return LABEL_SHOW_MORE;
 };
