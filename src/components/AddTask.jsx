@@ -1,72 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
-import Button from 'components/ui/Button';
-import { addTodo, setIsNewTaskRequested } from 'redux/actions/TodoAction';
-import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
-import { validate } from 'utils/helpers';
+import TaskForm from 'components/TaskForm';
+import { addTodo } from 'redux/actions/TodoAction';
+import { INITIAL_TASK } from 'utils/constants';
 
 function AddTask() {
-  const [error, setError] = useState(null);
-  const [title, setTitle] = useState('');
   const dispatch = useDispatch();
-  const textAreaRef = useRef(null);
 
-  function onSubmit(event) {
-    event.preventDefault();
-    const validateTitle = validate(title);
+  const onSubmit = (title) => {
+    dispatch(addTodo(title));
+  };
 
-    if (validateTitle.status === RESPONSE_ERROR) {
-      setError(validateTitle.message);
-      return;
-    }
-
-    setError(null);
-    dispatch(addTodo(validateTitle.text));
-    dispatch(setIsNewTaskRequested(false));
-    setTitle('');
-  }
-
-  function onInputChange(event) {
-    setTitle(event.target.value);
-  }
-
-  function onCancel(event) {
-    event.preventDefault();
-    dispatch(setIsNewTaskRequested(false));
-  }
-
-  function onKeyDown(event) {
-    if (event.key === KEY_ENTER) {
-      onSubmit(event);
-    }
-  }
-
-  useEffect(() => {
-    textAreaRef.current.focus();
-  }, []);
-
-  return (
-    <div className="task">
-      <form onSubmit={onSubmit}>
-        <textarea
-          className="task__input"
-          ref={textAreaRef}
-          onChange={onInputChange}
-          onKeyDown={onKeyDown}
-          required
-          value={title}
-        />
-        {error && <span>{error}</span>}
-        <div className="task__footer">
-          <Button>Add Task</Button>
-          <Button onClick={onCancel}>
-            <DeleteIcon />
-          </Button>
-        </div>
-      </form>
-    </div>
-  );
+  return <TaskForm task={INITIAL_TASK} submitTask={onSubmit} />;
 }
 
 export default AddTask;

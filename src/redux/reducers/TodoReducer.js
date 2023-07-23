@@ -1,7 +1,7 @@
 import { actionTypes } from 'redux/constants/ActionTypes';
-import { deleteTask, completeTask } from 'utils/helpers/ReducerHelper';
+import { deleteTask, completeTask, setEditMode, editTask } from 'utils/helpers/ReducerHelper';
 
-const { ADD_TODO, SET_ADD_TASK, DELETE_TODO, COMPLETE_TASK } = actionTypes;
+const { ADD_TODO, SET_ADD_TASK, DELETE_TODO, COMPLETE_TASK, SET_EDIT, EDIT_TODO } = actionTypes;
 const initialState = {
   isNewTaskRequested: false,
   todos: []
@@ -9,12 +9,17 @@ const initialState = {
 
 export const todoReducer = (state = initialState, action) => {
   let newList;
+
   switch (action.type) {
     case ADD_TODO:
       return {
         ...state,
         todos: [{ ...action.payload }, ...state.todos]
       };
+
+    case EDIT_TODO:
+      newList = editTask(state.todos, action.payload);
+      return { ...state, todos: newList };
 
     case SET_ADD_TASK:
       return {
@@ -32,6 +37,11 @@ export const todoReducer = (state = initialState, action) => {
     case COMPLETE_TASK:
       newList = completeTask(state.todos, action.payload);
       return { ...state, todos: newList };
+
+    case SET_EDIT:
+      newList = setEditMode(state.todos, action.payload);
+      return { ...state, todos: newList };
+
     default:
       return state;
   }
