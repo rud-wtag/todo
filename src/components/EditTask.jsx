@@ -11,11 +11,7 @@ function EditTask({ task }) {
     dispatch(setEditMode({ taskId: task.id, isEditMode: false }));
   }
 
-  return (
-    <div>
-      <TaskForm isEditMode={true} task={task} submitTask={onSubmit} />
-    </div>
-  );
+  return <TaskForm isEditMode={true} task={task} submitTask={onSubmit} />;
 }
 
 export default EditTask;
