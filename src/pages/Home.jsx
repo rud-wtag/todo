@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import BottomNav from 'components/BottomNav';
 import Heading from 'components/Heading';
 import TaskContainer from 'components/TaskContainer';
 import Loader from 'components/ui/Loader';
 import Toast from 'components/ui/Toast';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { loadTasksFromDB, toast } from 'redux/actions/TodoAction';
 import supabase from 'supabase';
 

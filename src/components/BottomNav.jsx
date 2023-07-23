@@ -1,13 +1,13 @@
+import { useDispatch } from 'react-redux';
 import { ReactComponent as AddIcon } from 'assets/add.svg';
 import FilterButtons from 'components/FilterButtons';
 import Button from 'components/ui/Button';
-import { useDispatch } from 'react-redux';
 import { setIsNewTaskRequested } from 'redux/actions/TodoAction';
 
 function BottomNav() {
   const dispatch = useDispatch();
 
-  function onAdding(event) {
+  function onAdd(event) {
     event.preventDefault();
     dispatch(setIsNewTaskRequested(true));
   }
@@ -17,7 +17,7 @@ function BottomNav() {
       <h1>Add Tasks</h1>
       <div className="bottom_nav">
         <div className="bottom_nav__left">
-          <Button variant="secondary" onClick={onAdding} className="bottom_nav__add_btn">
+          <Button variant="secondary" onClick={onAdd} className="bottom_nav__add_btn">
             <AddIcon /> create
           </Button>
         </div>

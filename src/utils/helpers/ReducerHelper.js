@@ -1,5 +1,6 @@
 import { filterActionTypes } from 'redux/constants/ActionTypes';
 import { TASKS_PER_PAGE } from 'utils/constants';
+
 const { ALL, COMPLETE, INCOMPLETE } = filterActionTypes;
 
 export const deleteTask = (todos, payload) => {

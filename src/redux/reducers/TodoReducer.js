@@ -23,6 +23,7 @@ const initialState = {
 
 export const todoReducer = (state = initialState, action) => {
   let newList;
+
   switch (action.type) {
     case ADD_TODO:
       return {

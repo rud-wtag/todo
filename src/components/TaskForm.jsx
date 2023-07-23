@@ -1,9 +1,9 @@
-import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
-import { ReactComponent as DoneIcon } from 'assets/ok.svg';
-import Button from 'components/ui/Button';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ReactComponent as DeleteIcon } from 'assets/delete.svg';
+import { ReactComponent as DoneIcon } from 'assets/ok.svg';
+import Button from 'components/ui/Button';
 import { setEditMode, setIsNewTaskRequested, setTodoComplete } from 'redux/actions/TodoAction';
 import { KEY_ENTER, RESPONSE_ERROR } from 'utils/constants';
 import { validate } from 'utils/helpers/index';

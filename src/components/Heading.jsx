@@ -1,9 +1,9 @@
-import { ReactComponent as Logo } from 'assets/logo.svg';
-import { ReactComponent as SearchIcon } from 'assets/search.svg';
 import classNames from 'classnames';
-import Button from 'components/ui/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ReactComponent as Logo } from 'assets/logo.svg';
+import { ReactComponent as SearchIcon } from 'assets/search.svg';
+import Button from 'components/ui/Button';
 import { setSearch, setSearching } from 'redux/actions/SearchAction';
 
 export default function Heading() {
