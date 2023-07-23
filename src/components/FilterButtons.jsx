@@ -1,5 +1,5 @@
-import Button from 'components/ui/Button';
 import { useDispatch } from 'react-redux';
+import Button from 'components/ui/Button';
 import { setFilter } from 'redux/actions/FilterAction';
 import { LABEL_ALL, LABEL_COMPLETE, LABEL_INCOMPLETE } from 'utils/constants';
 

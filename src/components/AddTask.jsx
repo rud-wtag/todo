@@ -11,11 +11,7 @@ function AddTask() {
     dispatch(toast({ type: 'success', message: 'Task added successfully' }));
   };
 
-  return (
-    <>
-      <TaskForm task={INITIAL_TASK} submitTask={onSubmit} />
-    </>
-  );
+  return <TaskForm task={INITIAL_TASK} submitTask={onSubmit} />;
 }
 
 export default AddTask;
