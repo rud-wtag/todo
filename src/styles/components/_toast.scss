@@ -9,12 +9,12 @@
   font-size: 1.125rem;
   color: $color-white;
   @include flexCenter;
-}
 
-.toast--success {
-  background: $color-aqua;
-}
+  &--success {
+    background: $color-aqua;
+  }
 
-.toast--danger {
-  background: $color-danger;
+  &--error {
+    background: $color-error;
+  }
 }
