@@ -12,7 +12,7 @@ function FilterButtons() {
     <>
       {actionButtons.map((button) => {
         return (
-          <Button key={button.label} className="bottom_nav__right__btn">
+          <Button key={button.label} className="bottom_nav__right-btn">
             {button.label}
           </Button>
         );
