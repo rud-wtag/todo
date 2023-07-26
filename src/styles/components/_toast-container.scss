@@ -1,0 +1,12 @@
+@use 'styles/abstracts' as *;
+
+.toast-container {
+  position: fixed;
+  top: 5rem;
+  width: 24.375rem;
+  margin-inline: auto;
+
+  @include respond(phone) {
+    width: 60%;
+  }
+}

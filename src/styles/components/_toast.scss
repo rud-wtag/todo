@@ -3,11 +3,20 @@
 .toast {
   height: 3.4375rem;
   padding: 0.625rem;
-  width: 30%;
-  margin: auto;
+  width: 100%;
   border-radius: 0.3125rem;
   font-size: 1.125rem;
   color: $color-white;
+  margin-bottom: 0.5rem;
+
+  svg {
+    path {
+      fill: $color-white;
+    }
+
+    margin-right: 0.4375rem;
+  }
+
   @include flexCenter;
 
   &--success {
