@@ -1,7 +1,7 @@
+import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector } from 'react-redux';
-import Toast from './ui/Toast';
+import Toast from 'components/ui/Toast';
 
 function ToastContainer() {
   const toast = useSelector((state) => state.todoStates.toast);
