@@ -1,18 +1,31 @@
+import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { TOAST_TYPE_SUCCESS } from 'utils/constants';
+import { ReactComponent as DoneIcon } from 'assets/ok.svg';
 
-function Toast() {
-  const [show, setShow] = useState(false);
-  const toast = useSelector((state) => state.todoStates.toast);
+function Toast({ message = '', type = TOAST_TYPE_SUCCESS }) {
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
-    setShow(toast.message !== null);
     setTimeout(() => {
       setShow(false);
-    }, 5000);
-  }, [toast]);
+    }, 3000);
+  }, []);
 
-  return <>{show && <div className={`toast toast--${toast.type}`}>{toast.message}</div>}</>;
+  return (
+    <>
+      {show && (
+        <div className={`toast toast--${type}`}>
+          {type === TOAST_TYPE_SUCCESS && <DoneIcon />} <span>{message}</span>
+        </div>
+      )}
+    </>
+  );
 }
+
+Toast.propTypes = {
+  message: propTypes.string,
+  type: propTypes.string
+};
 
 export default Toast;
