@@ -1,7 +1,7 @@
 import BottomNav from 'components/BottomNav';
 import Heading from 'components/Heading';
 import TaskContainer from 'components/TaskContainer';
-import ToastContainer from '../components/ToastContainer';
+import ToastContainer from 'components/ToastContainer';
 
 function Home() {
   return (
