@@ -1,4 +1,5 @@
 @use 'styles/abstracts/variables' as *;
+@use 'styles/abstracts/mixin' as *;
 
 .header {
   display: flex;
@@ -8,6 +9,11 @@
   width: 100%;
   border-bottom: 0.0625rem solid $border-color;
 
+  @include respond(phone) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__left {
     align-items: center;
     display: flex;
@@ -16,6 +22,7 @@
   &__brand {
     color: $color-primary;
     font-size: 2.25rem;
+
     font-weight: 700;
     margin-left: 0.875rem;
   }
@@ -33,7 +40,7 @@
 
   &__input {
     border-radius: 5px;
-    width: 32.375rem;
+    width: 50%;
     height: 2.25rem;
     margin-right: 1.0625rem;
     transition: width 0.5s ease-in-out;
@@ -43,9 +50,12 @@
       outline: none;
     }
 
-    &--hidden {
-      width: 0;
-      opacity: 0;
+    @media only screen and (min-width: $breakpoint-sm) {
+      width: 25.375rem;
+      &--hidden {
+        width: 0;
+        opacity: 0;
+      }
     }
   }
 

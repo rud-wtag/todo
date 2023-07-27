@@ -10,4 +10,8 @@
   @include respond(tab-port) {
     padding: 0 3.125rem;
   }
+
+  @include respond(phone) {
+    padding: 0 0.625rem;
+  }
 }
