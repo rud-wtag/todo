@@ -1,5 +1,6 @@
 import { filterActionTypes } from 'redux/constants/ActionTypes';
 import { TASKS_PER_PAGE } from 'utils/constants';
+
 const { ALL, COMPLETE, INCOMPLETE } = filterActionTypes;
 
 export const deleteTask = (todos, payload) => {
@@ -69,12 +70,25 @@ const filterTasks = (tasks, filterState = ALL) => {
   }
 };
 
+const searchTasks = (tasks, query) => {
+  return tasks.filter((task) => task.title.includes(query));
+};
+
 export const paginate = (tasks, currentPage) => {
   const indexOfLastTask = currentPage * TASKS_PER_PAGE;
 
   return tasks.slice(0, indexOfLastTask);
 };
 
-export const searchAndFilter = (tasks, filter) => {
-  return filterTasks(tasks, filter.filterState);
+export const searchAndFilter = (tasks, filter, search) => {
+  let todos;
+
+  if (search.query) {
+    todos = searchTasks(tasks, search.query);
+  } else {
+    todos = tasks;
+  }
+
+  todos = filterTasks(todos, filter.filterState);
+  return todos;
 };

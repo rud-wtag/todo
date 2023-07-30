@@ -1,10 +1,24 @@
+@use 'styles/abstracts/variables' as *;
+
 .header {
   display: flex;
   justify-content: space-between;
+  height: 4.5rem;
+  background: $color-white;
+  width: 100%;
+  margin-bottom: 4.0625rem;
+  border-bottom: 0.0625rem solid $border-color;
 
   &__left {
     align-items: center;
     display: flex;
+  }
+
+  &__brand {
+    color: $color-primary;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-left: 0.875rem;
   }
 
   &__right {
@@ -16,6 +30,24 @@
 
     align-items: center;
     display: flex;
+  }
+
+  &__input {
+    border-radius: 5px;
+    width: 32.375rem;
+    height: 2.25rem;
+    margin-right: 1.0625rem;
+    transition: width 0.5s ease-in-out;
+    border: 0.1875rem solid $color-border-active;
+
+    &:focus {
+      outline: none;
+    }
+
+    &--hidden {
+      width: 0;
+      opacity: 0;
+    }
   }
 
   &__logo svg {
