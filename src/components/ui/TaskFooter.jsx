@@ -34,15 +34,15 @@ export default function TaskFooter({ completedAt = null, createdAt, taskId }) {
       <div className="task__footer-left">
         {!completedAt && (
           <>
-            <Button onClick={onComplete}>
+            <Button variant="icon" onClick={onComplete}>
               <DoneIcon />
             </Button>
-            <Button onClick={onEdit}>
+            <Button variant="icon" onClick={onEdit}>
               <EditIcon />
             </Button>
           </>
         )}
-        <Button onClick={onDelete}>
+        <Button variant="icon" onClick={onDelete}>
           <DeleteIcon />
         </Button>
       </div>

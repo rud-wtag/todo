@@ -21,5 +21,6 @@ export const filterActionTypes = {
 };
 
 export const searchActionTypes = {
-  SET_SEARCH: 'SET_SEARCH'
+  SET_SEARCH: 'SET_SEARCH',
+  SET_SEARCHING: 'SET_SEARCHING'
 };

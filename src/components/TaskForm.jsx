@@ -68,18 +68,18 @@ function TaskForm({ isEditMode = false, task, submitTask }) {
         />
         {error && <span>{error}</span>}
         <div className="task__footer">
-          <div className="task__footer__left">
+          <div className="task__footer-left">
             {isEditMode ? (
               <>
                 <Button>Save</Button>
-                <Button onClick={onComplete}>
+                <Button variant="icon" onClick={onComplete}>
                   <DoneIcon />
                 </Button>
               </>
             ) : (
-              <Button>Add Task</Button>
+              <Button variant="secondary">Add Task</Button>
             )}
-            <Button onClick={onCancel}>
+            <Button variant="icon" onClick={onCancel}>
               <DeleteIcon />
             </Button>
           </div>

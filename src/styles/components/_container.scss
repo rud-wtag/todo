@@ -1,7 +1,6 @@
 @use 'styles/abstracts' as *;
 
 .container {
-  width: 100%;
   padding: 0 9.3125rem;
 
   @include respond(tab-land) {

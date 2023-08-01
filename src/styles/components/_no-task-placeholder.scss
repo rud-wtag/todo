@@ -2,7 +2,12 @@
 
 .no_task {
   flex-direction: column;
-  height: 100vh;
+  margin-top: 8.125rem;
   justify-content: flex-start;
   @include flexCenter;
+
+  &__text {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
 }
