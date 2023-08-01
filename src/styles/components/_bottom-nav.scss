@@ -5,6 +5,9 @@
     margin-top: 4.0625rem;
     h1 {
       font-size: 1.875rem;
+      @include respond(phone) {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -25,7 +28,8 @@
     }
 
     @include respond(phone) {
-      margin-left: auto;
+      display: flex;
+      justify-content: space-between;
       margin-top: 0.9375rem;
     }
   }
